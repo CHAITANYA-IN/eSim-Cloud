@@ -636,11 +636,18 @@ export class SimulatorComponent implements OnInit, OnDestroy {
 
   // Export to a JSON File
   exportJson() {
-    const viewref = this.dialog.open(ExportJSONDialogComponent, {
-      width: '600px',
-      data: {description:this.description,title:this.projectTitle}
-    });
-    viewref.afterClosed();
+
+    // Check if workspace is empty or not
+    if (Workspace.checkIfWorkspaceEmpty())
+      AlertService.showAlert('You have nothing to save!'); // Throw Alert if Workspace is empty
+    else {
+      // Open File rename dialog
+      const viewref = this.dialog.open(ExportJSONDialogComponent, {
+        width: '600px',
+        data: { description: this.description, title: this.projectTitle }
+      });
+      viewref.afterClosed();
+    }
   }
 
   // Import from jSON file
@@ -652,7 +659,7 @@ export class SimulatorComponent implements OnInit, OnDestroy {
       var data = fileReader.result;
       // Load the data object and change into workspace
       this.LoadProject(JSON.parse(data as string))
-   };
+    };
   }
 
 }
