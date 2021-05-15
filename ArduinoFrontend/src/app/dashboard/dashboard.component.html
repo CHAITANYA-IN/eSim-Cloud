@@ -20,8 +20,16 @@
     </div>-->
   <div class="row" style="margin: 1em">
     <div class="col-sm-2">
-      <a type="button" class="btn btn-primary mb-3" style="width: 100%;" [routerLink]="['/simulator']">+ New
-        Circuit</a>
+      <div class="d-flex">
+        <a type="button" class="btn btn-primary mb-3 m-2" style="width: 100%;" [routerLink]="['/simulator']">+ New
+          Circuit</a>
+        <a type="button" class="btn btn-primary mb-3 m-2" style="width: 100%;color:#fff;"
+          (click)="startImportProcess()">Import
+          Circuit</a>
+        <input accept=".esim" #importFile hidden mat-icon-button type="file"
+          style="align-items: center;background: transparent;" (change)="loadESIMFile($event)" class="mt-1" />
+      </div>
+
     </div>
     <div class="col-sm-7"></div>
     <div class="col-sm-3">

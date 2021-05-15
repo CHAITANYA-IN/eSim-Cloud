@@ -15,6 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AlertService } from '../alert/alert-service/alert.service';
 import { LayoutUtils } from '../layout/ArduinoCanvasInterface';
+import { FileHandlingService } from '../file-handling.service';
 /**
  * Declare Raphael so that build don't throws error
  */
@@ -111,6 +112,7 @@ export class SimulatorComponent implements OnInit, OnDestroy {
     private router: Router,
     private api: ApiService,
     private alertService: AlertService,
+    private fileHandler: FileHandlingService
   ) {
     // Initialize Global Variables
     Workspace.initializeGlobalFunctions();
@@ -162,6 +164,10 @@ export class SimulatorComponent implements OnInit, OnDestroy {
         setTimeout(() => this.router.navigate(['dashboard'])
           , 100);
         return;
+      }
+
+      if (v.import) {
+        this.loadESIMFile(v.import);
       }
       // if gallery query parameter is present
       if (v.gallery) {
@@ -259,9 +265,28 @@ export class SimulatorComponent implements OnInit, OnDestroy {
     block.classList.toggle('show-div');
   }
 
+  loadESIMFile(fileInfo) {
+    let fileData;
+    let file = this.fileHandler.getFileInfo()
+    if (file) {
+      let reader = new FileReader();
+      reader.onload = async () => {
+        fileData = reader.result;
+        fileData = await JSON.parse(fileData);
+        this.projectId = fileData.project.id;
+        this.projectTitle = fileData.project.name;
+        this.description = fileData.project.description;
+        Workspace.Load(fileData);
+        this.SaveProjectOff();
+      }
+      reader.readAsText(file);
+    }
+  }
+
   /** Function called when Start Simulation button is triggered */
   StartSimulation() {
     this.disabled = true;
+
     // Clears Output in Console
     Workspace.ClearConsole();
     // prints the output in console
@@ -412,7 +437,14 @@ export class SimulatorComponent implements OnInit, OnDestroy {
   }
   /** Function opens Dailog Box on selecting Export option */
   openDailog() {
-    const exportref = this.dialog.open(ExportfileComponent);
+    const exportref = this.dialog.open(ExportfileComponent, {
+      data: {
+        project: {
+          name: this.projectTitle,
+          description: this.description,
+        }
+      }
+    });
     exportref.afterClosed();
   }
   /** Function opens Component List Dailog box on selecting view option */
