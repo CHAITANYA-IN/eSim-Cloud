@@ -5,9 +5,10 @@
   <mat-radio-button class="radio-button" value="SVG" #svg>SVG</mat-radio-button>
   <mat-radio-button class="radio-button" value="png" #png>PNG</mat-radio-button>
   <mat-radio-button class="radio-button" value="jpeg" #jpg>JPEG</mat-radio-button>
+  <mat-radio-button class="radio-button" value="esim" #esim>ESIM</mat-radio-button>
 </mat-radio-group>
 <mat-divider></mat-divider>
 <mat-dialog-actions>
   <button color="primary" mat-button mat-dialog-close mat-dialog-close="true" style="margin-left: auto;">Cancel</button>
-  <button color="primary" mat-button (click)="Export(svg,png,jpg)">OK</button>
+  <button color="primary" mat-button (click)="Export(svg,png,jpg,esim)">OK</button>
 </mat-dialog-actions>

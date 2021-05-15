@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { SaveOffline } from '../Libs/SaveOffiline';
 import { ApiService } from '../api.service';
 import { Login } from '../Libs/Login';
@@ -7,6 +7,9 @@ import { Title } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { environment } from 'src/environments/environment';
 import { AlertService } from '../alert/alert-service/alert.service';
+import { Workspace } from '../Libs/Workspace';
+import { Router } from '@angular/router';
+import { FileHandlingService } from '../file-handling.service';
 
 /**
  * For Handling Time ie. Prevent moment error
@@ -45,6 +48,11 @@ export class DashboardComponent implements OnInit {
   /**
    * Close Project Properties dialog
    */
+
+
+  @ViewChild('importFile') importFile: ElementRef;
+
+
   closeProject() {
     document.documentElement.style.overflow = 'auto';
     const closeProject = document.getElementById('openproject');
@@ -74,7 +82,9 @@ export class DashboardComponent implements OnInit {
    * @param snackbar Material Snackbar
    * @param title Document Title
    */
-  constructor(private api: ApiService, private snackbar: MatSnackBar, private title: Title, private alertService: AlertService) {
+  constructor(private api: ApiService, private snackbar: MatSnackBar, private title: Title, private alertService: AlertService,
+    private router: Router,
+    private fileHandler: FileHandlingService) {
     this.title.setTitle('Dashboard | Arduino On Cloud');
   }
   /**
@@ -344,4 +354,17 @@ export class DashboardComponent implements OnInit {
       }
     }
   }
+
+  startImportProcess() {
+    this.importFile.nativeElement.click();
+  }
+
+  loadESIMFile(event) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.fileHandler.setFileInfo(file);
+      this.router.navigate(["simulator"], { queryParams: { import: file.name } });
+    }
+  }
+
 }
