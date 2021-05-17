@@ -663,7 +663,7 @@ export class SimulatorComponent implements OnInit, OnDestroy {
     };
   }
 
-  // Function to Exit Project & go back to mainScreen 
+  // Function to Exit Project & go back to mainScreen
   exitProject() {
     if (Workspace.checkIfWorkspaceEmpty()) {
       this.router.navigate(['/']);
@@ -672,7 +672,7 @@ export class SimulatorComponent implements OnInit, OnDestroy {
         if (res) {
           this.router.navigate(['/']);
         }
-      })
+      });
     }
   }
 
