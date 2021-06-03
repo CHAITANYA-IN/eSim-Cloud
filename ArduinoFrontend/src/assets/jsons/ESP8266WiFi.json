@@ -1,0 +1,97 @@
+{
+  "name": "ESP8266 WiFi Module",
+  "className": "ESP8266WiFi",
+  "pointHalf": 4,
+  "pins": [
+    {
+      "x": 182,
+      "y": 26,
+      "name": "RX"
+    },
+    {
+      "x": 198,
+      "y": 26,
+      "name": "Vcc"
+    },
+    {
+      "x": 212,
+      "y": 26,
+      "name": "GPIO0"
+    },
+    {
+      "x": 226,
+      "y": 26,
+      "name": "RESET"
+    },
+    {
+      "x": 240,
+      "y": 26,
+      "name": "GPIO2"
+    },
+    {
+      "x": 254,
+      "y": 26,
+      "name": "CH_EN"
+    },
+    {
+      "x": 270,
+      "y": 26,
+      "name": "GND"
+    },
+    {
+      "x": 284,
+      "y": 26,
+      "name": "TX"
+    }
+  ],
+  "draw": [
+    {
+      "type": "image",
+      "url": "assets/images/components/ESP8266WiFi.svg",
+      "width": 126,
+      "height": 66,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "type": "rectangle",
+      "width": 13,
+      "height": 7,
+      "x": 202,
+      "y": 81,
+      "radius": 0,
+      "fill": "rgba(255,255,0,0.38297873)"
+    },
+    {
+      "type": "rectangle",
+      "width": 13,
+      "height": 7,
+      "x": 380,
+      "y": 108,
+      "radius": 0,
+      "fill": "rgba(0,255,0,0.38297873)"
+    }
+  ],
+  "simulation": {},
+  "info": {
+    "name": "ESP8266 WiFi Module",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Arduino_Uno_006.jpg",
+    "Datasheet": "https://www.farnell.com/datasheets/1682209.pdf",
+    "description": "",
+    "properties": {
+      "Microcontroller": "ATMega328P",
+      "Operating Voltage": "5V",
+      "Input Voltage(limits)": "6-20V(limits)",
+      "Input Voltage(recommended)": "7V to 12V(recommended)",
+      "DC Current per I/O Pin": "40 mA",
+      "DC Current for 3.3V Pin": "50 mA",
+      "Digital Pins": "14(of which 6 provide PWM output)",
+      "Analog Pins": "6",
+      "Flash Memory": "32KB of which 0.5 KB used by bootloader",
+      "SRAM": "2KB(ATmega328)",
+      "Clock Speed": "16MHz",
+      "EEPROM": "1 KB (ATmega328)",
+      "LED": "Inbuilt"
+    }
+  }
+}

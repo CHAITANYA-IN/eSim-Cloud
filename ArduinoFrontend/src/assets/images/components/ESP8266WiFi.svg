@@ -25,14 +25,14 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.3460494"
-     inkscape:cx="348.42703"
-     inkscape:cy="479.18003"
-     inkscape:window-width="1312"
+     inkscape:cx="239.96148"
+     inkscape:cy="199.84408"
+     inkscape:window-width="993"
      inkscape:window-height="778"
-     inkscape:window-x="0"
+     inkscape:window-x="319"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
-     inkscape:current-layer="pinBoard"
+     inkscape:current-layer="g667"
      inkscape:object-paths="false" />
   <defs
      id="defs2">
@@ -96,786 +96,785 @@
        height="41.356575"
        x="138.87985"
        y="31.85574" />
-    <rect
-       style="fill:#164450;fill-rule:evenodd;stroke-width:0.264583"
-       id="rect31"
-       width="126.67741"
-       height="67.064514"
-       x="43.97123"
-       y="92.346283" />
-    
-   <g
-       id="antenna"
-       style="stroke:none;stroke-opacity:1"
-       transform="translate(-1.6168624,8.9730561)">
-      <title
-         id="title40826">Antenna</title>
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.550253;stroke-opacity:1"
-         id="rect191"
-         width="36.843704"
-         height="2.9080691"
-         x="50.097073"
-         y="141.89311"
-         ry="0.77384412" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
-         id="rect191-3"
-         width="20.830154"
-         height="2.9080691"
-         x="50.215466"
-         y="121.72195"
-         ry="0.77384412" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
-         id="rect191-3-4"
-         width="9.6399517"
-         height="2.9080691"
-         x="-144.82568"
-         y="68.137566"
-         ry="0.77384412"
-         transform="rotate(-90)" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
-         id="rect191-3-4-5"
-         width="9.6399517"
-         height="2.9080691"
-         x="-138.0938"
-         y="50.215477"
-         ry="0.77384412"
-         transform="rotate(-90)" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
-         id="rect191-3-4-5-2"
-         width="9.6399517"
-         height="2.9080691"
-         x="-124.63001"
-         y="50.215466"
-         ry="0.77384412"
-         transform="rotate(-90)" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
-         id="rect191-3-5"
-         width="20.830154"
-         height="2.9080691"
-         x="50.215477"
-         y="128.45384"
-         ry="0.77384412" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.547653;stroke-opacity:1"
-         id="rect191-3-5-0"
-         width="36.496437"
-         height="2.9080691"
-         x="-144.80118"
-         y="84.032715"
-         ry="0.77384412"
-         transform="rotate(-90)" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
-         id="rect191-3-5-0-9"
-         width="20.830154"
-         height="2.9080691"
-         x="-111.16623"
-         y="50.215469"
-         ry="0.77384412"
-         transform="rotate(-90)" />
-      <rect
-         style="fill:#ffcc00;stroke:none;stroke-width:0.413739;stroke-opacity:1"
-         id="rect191-3-6"
-         width="20.830154"
-         height="2.9080691"
-         x="50.215477"
-         y="135.18573"
-         ry="0.77384412" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
-         id="rect191-3-4-3"
-         width="9.6399517"
-         height="2.9080691"
-         x="-131.36191"
-         y="68.137558"
-         ry="0.77384412"
-         transform="rotate(-90)" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
-         id="rect191-3-5-6"
-         width="20.830154"
-         height="2.9080691"
-         x="50.215466"
-         y="114.99006"
-         ry="0.77384412" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
-         id="rect191-3-5-6-5"
-         width="20.830154"
-         height="2.9080691"
-         x="50.215469"
-         y="108.25816"
-         ry="0.77384412" />
-      <rect
-         style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
-         id="rect191-3-4-3-4"
-         width="9.6399517"
-         height="2.9080691"
-         x="-117.89812"
-         y="68.137558"
-         ry="0.77384412"
-         transform="rotate(-90)" />
-   </g>
-    <path
-       style="fill:#999999;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 90.225053,128.83648 -0.341915,-0.13654 v -4.69377 c 0,-3.06778 0.0552,-4.75254 0.159258,-4.86344 0.152064,-0.16201 0.36947,-0.16967 4.815376,-0.16967 3.416296,0 4.705286,0.028 4.840746,0.10527 0.13909,0.0793 0.18462,1.28976 0.18462,4.90918 0,4.65972 -0.009,4.80664 -0.29758,4.89472 -0.18506,0.0565 -1.946481,0.0908 -4.658079,0.0908 -3.697597,0 -4.412475,-0.0207 -4.702426,-0.13656 z"
-       id="NetworkIC" />
     <g
-       id="processingWiFiIC"
-       transform="translate(-1.6168624,8.9730561)">
-      <title
-         id="title40832">Processing WiFI IC</title>
+       id="g667"
+       transform="matrix(0.99465251,0,0,0.98412701,-43.736094,-90.880472)">
+      <rect
+         style="fill:#164450;fill-rule:evenodd;stroke-width:0.264583"
+         id="rect31"
+         width="126.67741"
+         height="67.064514"
+         x="43.97123"
+         y="92.346283" />
+      <g
+         id="antenna"
+         style="stroke:none;stroke-opacity:1"
+         transform="translate(-1.6168624,8.9730561)">
+        <title
+           id="title40826">Antenna</title>
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.550253;stroke-opacity:1"
+           id="rect191"
+           width="36.843704"
+           height="2.9080691"
+           x="50.097073"
+           y="141.89311"
+           ry="0.77384412" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
+           id="rect191-3"
+           width="20.830154"
+           height="2.9080691"
+           x="50.215466"
+           y="121.72195"
+           ry="0.77384412" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
+           id="rect191-3-4"
+           width="9.6399517"
+           height="2.9080691"
+           x="-144.82568"
+           y="68.137566"
+           ry="0.77384412"
+           transform="rotate(-90)" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
+           id="rect191-3-4-5"
+           width="9.6399517"
+           height="2.9080691"
+           x="-138.0938"
+           y="50.215477"
+           ry="0.77384412"
+           transform="rotate(-90)" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
+           id="rect191-3-4-5-2"
+           width="9.6399517"
+           height="2.9080691"
+           x="-124.63001"
+           y="50.215466"
+           ry="0.77384412"
+           transform="rotate(-90)" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
+           id="rect191-3-5"
+           width="20.830154"
+           height="2.9080691"
+           x="50.215477"
+           y="128.45384"
+           ry="0.77384412" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.547653;stroke-opacity:1"
+           id="rect191-3-5-0"
+           width="36.496437"
+           height="2.9080691"
+           x="-144.80118"
+           y="84.032715"
+           ry="0.77384412"
+           transform="rotate(-90)" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
+           id="rect191-3-5-0-9"
+           width="20.830154"
+           height="2.9080691"
+           x="-111.16623"
+           y="50.215469"
+           ry="0.77384412"
+           transform="rotate(-90)" />
+        <rect
+           style="fill:#ffcc00;stroke:none;stroke-width:0.413739;stroke-opacity:1"
+           id="rect191-3-6"
+           width="20.830154"
+           height="2.9080691"
+           x="50.215477"
+           y="135.18573"
+           ry="0.77384412" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
+           id="rect191-3-4-3"
+           width="9.6399517"
+           height="2.9080691"
+           x="-131.36191"
+           y="68.137558"
+           ry="0.77384412"
+           transform="rotate(-90)" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
+           id="rect191-3-5-6"
+           width="20.830154"
+           height="2.9080691"
+           x="50.215466"
+           y="114.99006"
+           ry="0.77384412" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.413739;stroke-opacity:1"
+           id="rect191-3-5-6-5"
+           width="20.830154"
+           height="2.9080691"
+           x="50.215469"
+           y="108.25816"
+           ry="0.77384412" />
+        <rect
+           style="fill:#ffd42a;stroke:none;stroke-width:0.28146;stroke-opacity:1"
+           id="rect191-3-4-3-4"
+           width="9.6399517"
+           height="2.9080691"
+           x="-117.89812"
+           y="68.137558"
+           ry="0.77384412"
+           transform="rotate(-90)" />
+      </g>
       <path
-         style="fill:#333333;fill-opacity:1;stroke-width:0.224381"
-         d="M 107.37393,145.24494 C 107.02557,145.02121 107,144.18679 107,133.0468 c 0,-8.98648 0.0637,-12.02824 0.25641,-12.24074 0.37008,-0.40808 24.11709,-0.40808 24.48717,0 0.19271,0.2125 0.25642,3.25501 0.25642,12.24416 0,11.58473 -0.013,11.96908 -0.4133,12.20531 -0.5638,0.33273 -23.69399,0.32262 -24.21277,-0.0108 z"
-         id="path35110" />
+         style="fill:#999999;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 90.225053,128.83648 -0.341915,-0.13654 v -4.69377 c 0,-3.06778 0.0552,-4.75254 0.159258,-4.86344 0.152064,-0.16201 0.36947,-0.16967 4.815376,-0.16967 3.416296,0 4.705286,0.028 4.840746,0.10527 0.13909,0.0793 0.18462,1.28976 0.18462,4.90918 0,4.65972 -0.009,4.80664 -0.29758,4.89472 -0.18506,0.0565 -1.946481,0.0908 -4.658079,0.0908 -3.697597,0 -4.412475,-0.0207 -4.702426,-0.13656 z"
+         id="NetworkIC" />
       <g
-         id="g30378">
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9"
-           width="2"
-           height="1"
-           x="105"
-           y="125" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-7"
-           width="2"
-           height="1"
-           x="105"
-           y="128" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-3"
-           width="2"
-           height="1"
-           x="105"
-           y="131" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-9"
-           width="2"
-           height="1"
-           x="105"
-           y="134" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-2"
-           width="2"
-           height="1"
-           x="105"
-           y="137" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-8"
-           width="2"
-           height="1"
-           x="105"
-           y="140" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-95"
-           width="2"
-           height="1"
-           x="105"
-           y="143" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-5"
-           width="2"
-           height="1"
-           x="105"
-           y="122" />
-      </g>
-      <g
-         id="g30388">
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-0"
-           width="2"
-           height="1"
-           x="132"
-           y="125" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-7-3"
-           width="2"
-           height="1"
-           x="132"
-           y="128" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-3-0"
-           width="2"
-           height="1"
-           x="132"
-           y="131" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-9-8"
-           width="2"
-           height="1"
-           x="132"
-           y="134" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-2-5"
-           width="2"
-           height="1"
-           x="132"
-           y="137" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-8-0"
-           width="2"
-           height="1"
-           x="132"
-           y="140" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-95-7"
-           width="2"
-           height="1"
-           x="132"
-           y="143" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-5-5"
-           width="2"
-           height="1"
-           x="132"
-           y="122" />
-      </g>
-      <g
-         id="g30306"
-         transform="rotate(-90,110.34762,150.42746)">
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-0-1"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="151.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-7-3-1"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="154.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-3-0-3"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="157.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-9-8-5"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="160.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-2-5-4"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="163.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-8-0-6"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="166.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-95-7-3"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="169.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-5-5-3"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="148.57983" />
-      </g>
-      <g
-         id="g30306-6"
-         transform="rotate(-90,123.84762,163.92746)">
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-0-1-3"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="151.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-7-3-1-8"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="154.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-3-0-3-9"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="157.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-9-8-5-0"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="160.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-2-5-4-6"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="163.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-8-0-6-3"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="166.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-95-7-3-5"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="169.57983" />
-        <rect
-           style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
-           id="rect21693-7-9-5-5-3-1"
-           width="2"
-           height="1"
-           x="140.27509"
-           y="148.57983" />
-      </g>
-    </g>
-    <g
-       id="storageIC"
-       transform="translate(-1.6168624,8.9730561)">
-      <title
-         id="title40830">Storage IC</title>
-      <path
-         style="fill:#333333;fill-opacity:1;stroke-width:0.22496"
-         d="M 111.51286,114.65861 111,114.31724 v -11.73445 c 0,-7.669465 0.0828,-11.881375 0.23888,-12.158611 C 111.46698,90.01915 111.79307,90 118.46195,90 c 5.12446,0 7.05793,0.07007 7.26112,0.263156 0.20865,0.198273 0.27693,3.224408 0.27693,12.272984 0,11.64933 -0.0134,12.01666 -0.44637,12.23683 -0.27758,0.1412 -2.91972,0.22703 -6.98711,0.22703 -5.5464,0 -6.61872,-0.0519 -7.05366,-0.34139 z"
-         id="path35149" />
-      <g id="s23451">
-         <rect
-            style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
-            id="rect21693"
-            width="3"
-            height="1.5"
-            x="108"
-            y="94" />
-         <rect
-            style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
-            id="rect21693-8"
-            width="3"
-            height="1.5"
-            x="108"
-            y="99" />
-         <rect
-            style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
-            id="rect21693-1"
-            width="3"
-            height="1.5"
-            x="108"
-            y="104" />
-         <rect
-            style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
-            id="rect21693-7"
-            width="3"
-            height="1.5"
-            x="108"
-            y="109" />
-      </g>
-      <g id="s43451">
-         <rect
-            style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
-            id="rect21693-6"
-            width="3"
-            height="1.5"
-            x="126"
-            y="94" />
-         <rect
-            style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
-            id="rect21693-0"
-            width="3"
-            height="1.5"
-            x="126"
-            y="99" />
-         <rect
-            style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
-            id="rect21693-87"
-            width="3"
-            height="1.5"
-            x="126"
-            y="104" />
-         <rect
-            style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
-            id="rect21693-63"
-            width="3"
-            height="1.5"
-            x="126"
-            y="109" />
-      </g>
-    </g>
-    <g
-       id="pinBoard"
-       transform="translate(-1.6168624,8.9730561)">
-      <title
-         id="title562">Pin Board</title>
-      <g
-         id="RX"
-         transform="matrix(1.3574812,0,0,1.4253553,124.34529,-111.4055)">
+         id="processingWiFiIC"
+         transform="translate(-1.6168624,8.9730561)">
         <title
-           id="title1432">RX Pin</title>
-        <ellipse
-           style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
-           id="path35370"
-           cx="19.907318"
-           cy="149.08563"
-           rx="1.8416461"
-           ry="1.7539487" />
-        <circle
-           style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
-           id="RX"
-           cx="19.902046"
-           cy="149.04561"
-           r="0.75338978">
-        </circle>
+           id="title40832">Processing WiFI IC</title>
+        <path
+           style="fill:#333333;fill-opacity:1;stroke-width:0.224381"
+           d="M 107.37393,145.24494 C 107.02557,145.02121 107,144.18679 107,133.0468 c 0,-8.98648 0.0637,-12.02824 0.25641,-12.24074 0.37008,-0.40808 24.11709,-0.40808 24.48717,0 0.19271,0.2125 0.25642,3.25501 0.25642,12.24416 0,11.58473 -0.013,11.96908 -0.4133,12.20531 -0.5638,0.33273 -23.69399,0.32262 -24.21277,-0.0108 z"
+           id="path35110" />
+        <g
+           id="g30378">
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9"
+             width="2"
+             height="1"
+             x="105"
+             y="125" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-7"
+             width="2"
+             height="1"
+             x="105"
+             y="128" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-3"
+             width="2"
+             height="1"
+             x="105"
+             y="131" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-9"
+             width="2"
+             height="1"
+             x="105"
+             y="134" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-2"
+             width="2"
+             height="1"
+             x="105"
+             y="137" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-8"
+             width="2"
+             height="1"
+             x="105"
+             y="140" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-95"
+             width="2"
+             height="1"
+             x="105"
+             y="143" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-5"
+             width="2"
+             height="1"
+             x="105"
+             y="122" />
+        </g>
+        <g
+           id="g30388">
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-0"
+             width="2"
+             height="1"
+             x="132"
+             y="125" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-7-3"
+             width="2"
+             height="1"
+             x="132"
+             y="128" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-3-0"
+             width="2"
+             height="1"
+             x="132"
+             y="131" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-9-8"
+             width="2"
+             height="1"
+             x="132"
+             y="134" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-2-5"
+             width="2"
+             height="1"
+             x="132"
+             y="137" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-8-0"
+             width="2"
+             height="1"
+             x="132"
+             y="140" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-95-7"
+             width="2"
+             height="1"
+             x="132"
+             y="143" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-5-5"
+             width="2"
+             height="1"
+             x="132"
+             y="122" />
+        </g>
+        <g
+           id="g30306"
+           transform="rotate(-90,110.34762,150.42746)">
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-0-1"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="151.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-7-3-1"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="154.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-3-0-3"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="157.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-9-8-5"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="160.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-2-5-4"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="163.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-8-0-6"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="166.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-95-7-3"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="169.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-5-5-3"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="148.57983" />
+        </g>
+        <g
+           id="g30306-6"
+           transform="rotate(-90,123.84762,163.92746)">
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-0-1-3"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="151.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-7-3-1-8"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="154.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-3-0-3-9"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="157.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-9-8-5-0"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="160.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-2-5-4-6"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="163.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-8-0-6-3"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="166.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-95-7-3-5"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="169.57983" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0556173"
+             id="rect21693-7-9-5-5-3-1"
+             width="2"
+             height="1"
+             x="140.27509"
+             y="148.57983" />
+        </g>
       </g>
       <g
-         id="Vcc"
-         transform="matrix(1.3574812,0,0,1.4253553,136.34529,-111.40552)">
+         id="storageIC"
+         transform="translate(-1.6168624,8.9730561)">
         <title
-           id="title1434">Vcc (3.3V) Pin</title>
-        <ellipse
-           style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
-           id="path35370-8"
-           cx="19.907318"
-           cy="149.08563"
-           rx="1.8416461"
-           ry="1.7539487" />
-        <circle
-           style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
-           id="path35460-3"
-           cx="19.902046"
-           cy="149.04561"
-           r="0.75338978" />
+           id="title40830">Storage IC</title>
+        <path
+           style="fill:#333333;fill-opacity:1;stroke-width:0.22496"
+           d="M 111.51286,114.65861 111,114.31724 v -11.73445 c 0,-7.669465 0.0828,-11.881375 0.23888,-12.158611 C 111.46698,90.01915 111.79307,90 118.46195,90 c 5.12446,0 7.05793,0.07007 7.26112,0.263156 0.20865,0.198273 0.27693,3.224408 0.27693,12.272984 0,11.64933 -0.0134,12.01666 -0.44637,12.23683 -0.27758,0.1412 -2.91972,0.22703 -6.98711,0.22703 -5.5464,0 -6.61872,-0.0519 -7.05366,-0.34139 z"
+           id="path35149" />
+        <g
+           id="s23451">
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
+             id="rect21693"
+             width="3"
+             height="1.5"
+             x="108"
+             y="94" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
+             id="rect21693-8"
+             width="3"
+             height="1.5"
+             x="108"
+             y="99" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
+             id="rect21693-1"
+             width="3"
+             height="1.5"
+             x="108"
+             y="104" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
+             id="rect21693-7"
+             width="3"
+             height="1.5"
+             x="108"
+             y="109" />
+        </g>
+        <g
+           id="s43451">
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
+             id="rect21693-6"
+             width="3"
+             height="1.5"
+             x="126"
+             y="94" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
+             id="rect21693-0"
+             width="3"
+             height="1.5"
+             x="126"
+             y="99" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
+             id="rect21693-87"
+             width="3"
+             height="1.5"
+             x="126"
+             y="104" />
+          <rect
+             style="fill:#999999;fill-opacity:1;stroke-width:0.0834259"
+             id="rect21693-63"
+             width="3"
+             height="1.5"
+             x="126"
+             y="109" />
+        </g>
       </g>
       <g
-         id="GPIO0"
-         transform="matrix(1.3574812,0,0,1.4253553,124.34529,-101.40549)">
+         id="pinBoard"
+         transform="translate(-1.6168624,8.9730561)">
         <title
-           id="title40836">GPIO 0 Pin</title>
-        <ellipse
-           style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
-           id="path35370-2"
-           cx="19.907318"
-           cy="149.08563"
-           rx="1.8416461"
-           ry="1.7539487" />
-        <circle
-           style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
-           id="path35460-4"
-           cx="19.902046"
-           cy="149.04561"
-           r="0.75338978" />
-      </g>
-      <g
-         id="RESET"
-         transform="matrix(1.3574812,0,0,1.4253553,136.34529,-101.40551)">
-        <title
-           id="title40836">Reset Pin</title>
-        <ellipse
-           style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
-           id="path35370-8-6"
-           cx="19.907318"
-           cy="149.08563"
-           rx="1.8416461"
-           ry="1.7539487" />
-        <circle
-           style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
-           id="path35460-3-7"
-           cx="19.902046"
-           cy="149.04561"
-           r="0.75338978" />
-      </g>
-      <g
-         id="GPIO2"
-         transform="matrix(1.3574812,0,0,1.4253553,124.34529,-91.405503)">
-        <title
-           id="title40836">GPIO 2 Pin</title>
-        <ellipse
-           style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
-           id="path35370-4"
-           cx="19.907318"
-           cy="149.08563"
-           rx="1.8416461"
-           ry="1.7539487" />
-        <circle
-           style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
-           id="path35460-1"
-           cx="19.902046"
-           cy="149.04561"
-           r="0.75338978" />
-      </g>
-      <g
-         id="CH_EN"
-         transform="matrix(1.3574812,0,0,1.4253553,136.34529,-91.405523)">
-        <title
-           id="title40836">Channel Enabler Pin</title>
-        <ellipse
-           style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
-           id="path35370-8-60"
-           cx="19.907318"
-           cy="149.08563"
-           rx="1.8416461"
-           ry="1.7539487" />
-        <circle
-           style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
-           id="path35460-3-2"
-           cx="19.902046"
-           cy="149.04561"
-           r="0.75338978" />
-      </g>
-      <g
-         id="GND"
-         transform="matrix(1.3574812,0,0,1.4253553,124.34529,-81.405505)">
-        <title
-           id="title40836">Ground Pin</title>
-        <ellipse
-           style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
-           id="path35370-2-0"
-           cx="19.907318"
-           cy="149.08563"
-           rx="1.8416461"
-           ry="1.7539487" />
-        <circle
-           style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
-           id="path35460-4-8"
-           cx="19.902046"
-           cy="149.04561"
-           r="0.75338978" />
-      </g>
-      <g
-         id="TX"
-         transform="matrix(1.3574812,0,0,1.4253553,136.34529,-81.405525)">
-        <title
-           id="title40836">TX Pin</title>
-        <ellipse
-           style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
-           id="path35370-8-6-9"
-           cx="19.907318"
-           cy="149.08563"
-           rx="1.8416461"
-           ry="1.7539487" />
-        <circle
-           style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
-           id="path35460-3-7-4"
-           cx="19.902046"
-           cy="149.04561"
-           r="0.75338978" />
-      </g>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="150.19684"
-         y="105.90015"
-         id="text39262"><tspan
-           sodipodi:role="line"
-           id="tspan39260"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           id="title562">Pin Board</title>
+        <g
+           id="g381"
+           transform="matrix(1.3574812,0,0,1.4253553,124.34529,-111.4055)">
+          <title
+             id="title1432">RX Pin</title>
+          <ellipse
+             style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+             id="path35370"
+             cx="19.907318"
+             cy="149.08563"
+             rx="1.8416461"
+             ry="1.7539487" />
+          <circle
+             style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
+             id="RX"
+             cx="19.902046"
+             cy="149.04561"
+             r="0.75338978" />
+        </g>
+        <g
+           id="Vcc"
+           transform="matrix(1.3574812,0,0,1.4253553,136.34529,-111.40552)">
+          <title
+             id="title1434">Vcc (3.3V) Pin</title>
+          <ellipse
+             style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+             id="path35370-8"
+             cx="19.907318"
+             cy="149.08563"
+             rx="1.8416461"
+             ry="1.7539487" />
+          <circle
+             style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
+             id="path35460-3"
+             cx="19.902046"
+             cy="149.04561"
+             r="0.75338978" />
+        </g>
+        <g
+           id="GPIO0"
+           transform="matrix(1.3574812,0,0,1.4253553,124.34529,-101.40549)">
+          <title
+             id="title40836">GPIO 0 Pin</title>
+          <ellipse
+             style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+             id="path35370-2"
+             cx="19.907318"
+             cy="149.08563"
+             rx="1.8416461"
+             ry="1.7539487" />
+          <circle
+             style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
+             id="path35460-4"
+             cx="19.902046"
+             cy="149.04561"
+             r="0.75338978" />
+        </g>
+        <g
+           id="RESET"
+           transform="matrix(1.3574812,0,0,1.4253553,136.34529,-101.40551)">
+          <title
+             id="title391">Reset Pin</title>
+          <ellipse
+             style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+             id="path35370-8-6"
+             cx="19.907318"
+             cy="149.08563"
+             rx="1.8416461"
+             ry="1.7539487" />
+          <circle
+             style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
+             id="path35460-3-7"
+             cx="19.902046"
+             cy="149.04561"
+             r="0.75338978" />
+        </g>
+        <g
+           id="GPIO2"
+           transform="matrix(1.3574812,0,0,1.4253553,124.34529,-91.405503)">
+          <title
+             id="title396">GPIO 2 Pin</title>
+          <ellipse
+             style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+             id="path35370-4"
+             cx="19.907318"
+             cy="149.08563"
+             rx="1.8416461"
+             ry="1.7539487" />
+          <circle
+             style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
+             id="path35460-1"
+             cx="19.902046"
+             cy="149.04561"
+             r="0.75338978" />
+        </g>
+        <g
+           id="CH_EN"
+           transform="matrix(1.3574812,0,0,1.4253553,136.34529,-91.405523)">
+          <title
+             id="title401">Channel Enabler Pin</title>
+          <ellipse
+             style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+             id="path35370-8-60"
+             cx="19.907318"
+             cy="149.08563"
+             rx="1.8416461"
+             ry="1.7539487" />
+          <circle
+             style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
+             id="path35460-3-2"
+             cx="19.902046"
+             cy="149.04561"
+             r="0.75338978" />
+        </g>
+        <g
+           id="GND"
+           transform="matrix(1.3574812,0,0,1.4253553,124.34529,-81.405505)">
+          <title
+             id="title406">Ground Pin</title>
+          <ellipse
+             style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+             id="path35370-2-0"
+             cx="19.907318"
+             cy="149.08563"
+             rx="1.8416461"
+             ry="1.7539487" />
+          <circle
+             style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
+             id="path35460-4-8"
+             cx="19.902046"
+             cy="149.04561"
+             r="0.75338978" />
+        </g>
+        <g
+           id="TX"
+           transform="matrix(1.3574812,0,0,1.4253553,136.34529,-81.405525)">
+          <title
+             id="title411">TX Pin</title>
+          <ellipse
+             style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.264583"
+             id="path35370-8-6-9"
+             cx="19.907318"
+             cy="149.08563"
+             rx="1.8416461"
+             ry="1.7539487" />
+          <circle
+             style="fill:#b3b3b3;fill-opacity:1;stroke-width:0.264583"
+             id="path35460-3-7-4"
+             cx="19.902046"
+             cy="149.04561"
+             r="0.75338978" />
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="150.19684"
-           y="105.90015">RX</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="158.84669"
-         y="105.93462"
-         id="text39262-4"><tspan
-           sodipodi:role="line"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           y="105.90015"
+           id="text39262"><tspan
+             sodipodi:role="line"
+             id="tspan39260"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="150.19684"
+             y="105.90015">RX</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="158.84669"
            y="105.93462"
-           id="tspan51619">Vcc (3.3 V)</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="160.69684"
-         y="115.87691"
-         id="text39262-4-9"><tspan
-           sodipodi:role="line"
-           id="tspan39260-7-1"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           id="text39262-4"><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="158.84669"
+             y="105.93462"
+             id="tspan51619">Vcc (3.3 V)</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="160.69684"
-           y="115.87691">Reset</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="160.27005"
-         y="125.87691"
-         id="text39262-4-98"><tspan
-           sodipodi:role="line"
-           id="tspan39260-7-3"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           y="115.87691"
+           id="text39262-4-9"><tspan
+             sodipodi:role="line"
+             id="tspan39260-7-1"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="160.69684"
+             y="115.87691">Reset</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="160.27005"
-           y="125.87691">CH_EN</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="162.36909"
-         y="135.87691"
-         id="text39262-4-98-6"><tspan
-           sodipodi:role="line"
-           id="tspan39260-7-3-4"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           y="125.87691"
+           id="text39262-4-98"><tspan
+             sodipodi:role="line"
+             id="tspan39260-7-3"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="160.27005"
+             y="125.87691">CH_EN</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="162.36909"
-           y="135.87691">TX</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="149.27005"
-         y="135.87691"
-         id="text39262-4-98-62"><tspan
-           sodipodi:role="line"
-           id="tspan39260-7-3-42"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           y="135.87691"
+           id="text39262-4-98-6"><tspan
+             sodipodi:role="line"
+             id="tspan39260-7-3-4"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="162.36909"
+             y="135.87691">TX</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="149.27005"
-           y="135.87691">GND</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="148.27005"
-         y="125.90015"
-         id="text39262-4-98-62-0"><tspan
-           sodipodi:role="line"
-           id="tspan39260-7-3-42-4"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           y="135.87691"
+           id="text39262-4-98-62"><tspan
+             sodipodi:role="line"
+             id="tspan39260-7-3-42"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="149.27005"
+             y="135.87691">GND</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="148.27005"
-           y="125.90015">GPIO 2</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="148.27005"
-         y="115.90015"
-         id="text39262-4-98-62-9"><tspan
-           sodipodi:role="line"
-           id="tspan39260-7-3-42-47"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           y="125.90015"
+           id="text39262-4-98-62-0"><tspan
+             sodipodi:role="line"
+             id="tspan39260-7-3-42-4"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="148.27005"
+             y="125.90015">GPIO 2</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="148.27005"
-           y="115.90015">GPIO 0</tspan></text>
-      <rect
-         style="fill:none;fill-opacity:1;stroke:url(#linearGradient29821);stroke-width:0.880897;stroke-miterlimit:4;stroke-dasharray:none"
-         id="pinBorder"
-         width="23.180399"
-         height="40.806202"
-         x="146.44044"
-         y="96.440445">
+           y="115.90015"
+           id="text39262-4-98-62-9"><tspan
+             sodipodi:role="line"
+             id="tspan39260-7-3-42-47"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="148.27005"
+             y="115.90015">GPIO 0</tspan></text>
+        <rect
+           style="fill:none;fill-opacity:1;stroke:url(#linearGradient29821);stroke-width:0.880897;stroke-miterlimit:4;stroke-dasharray:none"
+           id="pinBorder"
+           width="23.180399"
+           height="40.806202"
+           x="146.44044"
+           y="96.440445">
+          <title
+             id="title40838">Pin Border</title>
+        </rect>
+      </g>
+      <g
+         id="LEDs"
+         transform="translate(-1.6168624,8.9730561)">
         <title
-           id="title40838">Pin Border</title>
-      </rect>
-    </g>
-    <g
-       id="LEDs"
-       transform="translate(-1.6168624,8.9730561)">
-      <title
-         id="title1141">LED section</title>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="92.827744"
-         y="96.847725"
-         id="text39262-5"><tspan
-           sodipodi:role="line"
-           id="tspan39260-0"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           id="title1141">LED section</title>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="92.827744"
-           y="96.847725">POWER</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="93.400955"
-         y="106.30647"
-         id="text39262-5-3"><tspan
-           sodipodi:role="line"
-           id="tspan39260-0-3"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+           y="96.847725"
+           id="text39262-5"><tspan
+             sodipodi:role="line"
+             id="tspan39260-0"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="92.827744"
+             y="96.847725">POWER</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
            x="93.400955"
-           y="106.30647">COMM</tspan></text>
-      <rect
-         id="powerLEDOFF"
-         width="2.5"
-         x="95"
-         y="98"
-         gorn="0.2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0"
-         height="1.5"
-         id="_x30_.1.6.0.0.0.0.0.1.0-3"
-         style="fill:#ffffff" />
-      <rect
-         id="powerLEDON"
-         width="2.5"
-         x="95"
-         y="98"
-         gorn="0.2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0"
-         height="1.5"
-         id="_x30_.1.6.0.0.0.0.0.1.0-3"
-         style="fill:#ffff00" />
-      <rect
-         id="commLEDOFF"
-         width="2.5"
-         x="95"
-         y="102"
-         gorn="0.2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0"
-         height="1.5"
-         id="_x30_.1.6.0.0.0.0.0.1.0-3"
-         style="fill:#ffffff" />
-      <rect
-         id="commLEDON"
-         width="2.5"
-         x="95"
-         y="102"
-         gorn="0.2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0"
-         height="1.5"
-         id="_x30_.1.6.0.0.0.0.0.1.0-3"
-         style="fill:#ffff00" />
-   </g>
-   <text
+           y="106.30647"
+           id="text39262-5-3"><tspan
+             sodipodi:role="line"
+             id="tspan39260-0-3"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+             x="93.400955"
+             y="106.30647">COMM</tspan></text>
+        <rect
+           id="_x30_.1.6.0.0.0.0.0.1.0-3"
+           width="2.5"
+           x="95"
+           y="98"
+           gorn="0.2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0"
+           height="1.5"
+           style="fill:#ffffff" />
+        <rect
+           id="rect441"
+           width="2.5"
+           x="95"
+           y="98"
+           gorn="0.2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0"
+           height="1.5"
+           style="fill:#ffff00" />
+        <rect
+           id="rect443"
+           width="2.5"
+           x="95"
+           y="102"
+           gorn="0.2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0"
+           height="1.5"
+           style="fill:#ffffff" />
+        <rect
+           id="rect445"
+           width="2.5"
+           x="95"
+           y="102"
+           gorn="0.2.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.0.0.0"
+           height="1.5"
+           style="fill:#ffff00" />
+      </g>
+      <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.76389px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="93"
-         y="96"
-         id="text39262-5"><tspan
-           sodipodi:role="line"
-           id="tspan39260-0"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
-           x="92.827744"
-           y="96.847725">ESP8266 WiFi Module</tspan>
-   </text>
+         x="93.947075"
+         y="95.641708"
+         id="text450"><tspan
+   sodipodi:role="line"
+   id="tspan448"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3px;font-family:Verdana;-inkscape-font-specification:'Verdana, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:0.264583"
+   x="93.947075"
+   y="95.641708">ESP8266 WiFi Module</tspan>   </text>
+    </g>
   </g>
 </svg>
