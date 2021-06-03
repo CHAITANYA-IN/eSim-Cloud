@@ -38,6 +38,8 @@ Coincell	-		3V					240mAh @ 190�A
 
 DC Motor	4.5V		9V					70mA
 
+ESP8266WiFi	0V DC		3.3V DC		0mA			80mA
+
 
 
 
