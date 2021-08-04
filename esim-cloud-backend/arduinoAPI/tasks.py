@@ -120,6 +120,8 @@ def CompileAssembly(filenames):
             logger.info(ino_name)
             logger.info(asm_name)
 
+            # avr-gcc -xassembler-with-cpp asm_name -mmcu=atmega328p -nostdlib
+            # avr-objcopy -O ihex a.out code.hex
             ps = subprocess.Popen(
                 ['avr-gcc', '-xassembler-with-cpp', asm_name, '-mmcu=atmega328p',
                     '-nostdlib', '-o', out_name],
