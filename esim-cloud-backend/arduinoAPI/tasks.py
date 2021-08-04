@@ -109,6 +109,67 @@ def CompileINO(filenames):
     return ret
 
 
+def CompileAssembly(filenames):
+    ret = {}
+    try:
+        for filename in filenames:
+            ino_name = settings.MEDIA_ROOT+'/'+str(filename)+'/sketch.ino'
+            asm_name = settings.MEDIA_ROOT+'/'+str(filename)+'/arduino.s'
+            out_name = settings.MEDIA_ROOT+'/'+str(filename)+'/out.hex'
+            logger.info('Compiling')
+            logger.info(ino_name)
+            logger.info(asm_name)
+
+            ps = subprocess.Popen(
+                ['avr-gcc', '-xassembler-with-cpp', asm_name, '-mmcu=atmega328p',
+                    '-nostdlib', '-o', out_name],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
+            )
+            output, err = ps.communicate()
+            # print(ps.returncode)
+            # print(output)
+            # print(err)
+            data = ''
+            if err == '' and ps.returncode != 0:
+                err = b'Code Cannot be Compiled: Unknown Reason'
+
+            if os.path.isfile(out_name):
+                data = open(out_name, 'r').read()
+            # print(data)
+            pos = filename.find('_')
+            if pos != -1:
+                pos += 1
+                key = filename[pos:]
+            else:
+                key = filename
+
+            ret[key] = {
+                'output': re.sub(
+                    rf'{settings.MEDIA_ROOT}/{filename}/',
+                    '',
+                    output.decode('utf-8')
+                ),
+                'error': re.sub(
+                    rf'{settings.MEDIA_ROOT}/{filename}/',
+                    '',
+                    err.decode('utf-8')
+                ),
+                'data': data
+            }
+
+    except Exception:
+        print(traceback.format_exc())
+        return False
+    finally:
+        for filename in filenames:
+            parent = settings.MEDIA_ROOT+'/'+str(filename)
+            shutil.rmtree(parent, True)
+            logger.info('Removing')
+            logger.info(parent)
+    return ret
+
+
 @shared_task
 def compile_sketch_task(task_id, data):
     try:
