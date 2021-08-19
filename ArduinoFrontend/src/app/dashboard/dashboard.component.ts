@@ -7,9 +7,9 @@ import { Title } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { environment } from 'src/environments/environment';
 import { AlertService } from '../alert/alert-service/alert.service';
-import { Workspace } from '../Libs/Workspace';
-import { Router } from '@angular/router';
-import { FileHandlingService } from '../file-handling.service';
+import { SaveOnline } from '../Libs/SaveOnline';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 /**
  * For Handling Time ie. Prevent moment error
@@ -82,15 +82,65 @@ export class DashboardComponent implements OnInit {
    * @param snackbar Material Snackbar
    * @param title Document Title
    */
-  constructor(private api: ApiService, private snackbar: MatSnackBar, private title: Title, private alertService: AlertService,
+  constructor(
+    private api: ApiService,
+    private snackbar: MatSnackBar,
+    private title: Title,
+    private alertService: AlertService,
     private router: Router,
-    private fileHandler: FileHandlingService) {
+    private aroute: ActivatedRoute
+  ) {
     this.title.setTitle('Dashboard | Arduino On Cloud');
   }
   /**
    * On Init Dashboard Page
    */
   ngOnInit() {
+    // In Angular  Development Mode.
+    this.api.login().then(() => {
+      this.readTempItems();
+      this.readOnCloudItems();
+    });
+  }
+
+  /**
+   * Read the online saved circuits.
+   */
+  readOnCloudItems() {
+    // Get Login token
+    const token = Login.getToken();
+    // if token is present get the list of project created by a user
+    if (token) {
+      this.api.listProject(token).subscribe((val: any[]) => {
+        this.online = this.filterOnlineProjects(val);
+      }, err => console.log(err));
+    } else {
+      // if no token is present then show this message
+      this.onCloudMessage = 'Please Login to See Circuit';
+    }
+  }
+
+  /**
+   * Filter projects: Pick only 1 variation of a project
+   * @param val All projects in cloud
+   * @returns filtered list of projects
+   */
+  filterOnlineProjects(val) {
+    const projects = [];
+    const added = [];
+    for (const e in val) {
+      if (!added.includes(val[e].save_id)) {
+        added.push(val[e].save_id);
+        projects.push(val[e]);
+      }
+    }
+    return projects;
+  }
+
+  /**
+   * Read the Database for temporarily saved circuits.
+   */
+  readTempItems() {
     // Read All Offline Project
     SaveOffline.ReadALL((v: any[]) => {
       // Map Offline Project to standard card item
@@ -106,18 +156,6 @@ export class DashboardComponent implements OnInit {
         };
       });
     });
-
-    // Get Login token
-    const token = Login.getToken();
-    // if token is present get the list of project created by a user
-    if (token) {
-      this.api.listProject(token).subscribe((val: any[]) => {
-        this.online = val;
-      }, err => console.log(err));
-    } else {
-      // if no token is present then show this message
-      this.onCloudMessage = 'Please Login to See Circuit';
-    }
   }
 
   /**
@@ -142,7 +180,7 @@ export class DashboardComponent implements OnInit {
       // Delete Project from cloud
       const token = Login.getToken();
       this.api.deleteProject(id, token).subscribe((out) => {
-        if (out.done) {
+        if (out.status === 204 || out.done) {
           // Remove From the list
           this.online.splice(index, 1);
         } else {
@@ -175,7 +213,7 @@ export class DashboardComponent implements OnInit {
    */
   DisableSharing(item: any) {
     const token = Login.getToken();
-    this.EnableSharing(item.save_id, token, (v) => {
+    this.EnableSharing(item, token, (v) => {
       item.shared = v.shared;
       AlertService.showAlert('Sharing Disabled!');
     }, false);
@@ -227,9 +265,8 @@ export class DashboardComponent implements OnInit {
    */
   CopyUrlToClipBoard(url) {
     // Create a temp html element put url inside it
-    const tmpEl = document.createElement('textarea');
+    const tmpEl: HTMLTextAreaElement = document.querySelector('#sharing-url');
     tmpEl.value = url;
-    document.body.appendChild(tmpEl);
     // Focus and Select the element
     tmpEl.focus();
     tmpEl.select();
@@ -243,8 +280,6 @@ export class DashboardComponent implements OnInit {
         duration: 2000
       });
     }
-    // Remove the temp element
-    document.body.removeChild(tmpEl);
   }
   /**
    * Project to enable or disable sharing (default enable)
@@ -253,8 +288,8 @@ export class DashboardComponent implements OnInit {
    * @param callback Callback when done
    * @param enable Enable/Disable sharing
    */
-  EnableSharing(id, token, callback: any, enable: boolean = true) {
-    this.api.Sharing(id, enable, token).subscribe((v) => {
+  EnableSharing(circuit, token, callback: any, enable: boolean = true) {
+    this.api.Sharing(circuit.save_id, circuit.branch, circuit.version, enable, token).subscribe((v) => {
       callback(v);
     }, err => {
       if (err.status === 401) {
@@ -291,9 +326,10 @@ export class DashboardComponent implements OnInit {
       duration: 10000
     });
     // Create a Slug
-    const slug = `${selected.save_id.replace(/-/g, '_')}-${selected.name.substr(0, 50).replace(/ +/g, '-')}`;
+    let slug = `${selected.save_id.replace(/-/g, '_')}-${selected.branch.replace(/-/g, '_')}-${selected.version.replace(/-/g, '_')}`;
+    slug += `-${selected.name.substr(0, 50).replace(/ +/g, '-')}`;
     // redirect to share url
-    let shareURL = `${window.location.protocol}\\\\${window.location.host}/arduino/#/project/${slug} `;
+    let shareURL = `${window.location.protocol}\\\\${window.location.host}/arduino/#/project/${slug}`;
     const copyUrl = shareURL;
     // encode url for redirect
     shareURL = encodeURIComponent(shareURL);
@@ -312,7 +348,7 @@ export class DashboardComponent implements OnInit {
         window.open(map[index], '_blank');
       } else {
         // otherwise enable sharing and open the link in new tab
-        this.EnableSharing(selected.save_id, token, (v) => {
+        this.EnableSharing(selected, token, (v) => {
           selected.shared = v.shared;
           if (selected.shared) {
             window.open(map[index], '_blank');
@@ -328,7 +364,7 @@ export class DashboardComponent implements OnInit {
       if (selected.shared) {
         window.open(`mailto:?${back}`, '_blank');
       } else {
-        this.EnableSharing(selected.save_id, token, (v) => {
+        this.EnableSharing(selected, token, (v) => {
           selected.shared = v.shared;
           if (selected.shared) {
             window.open(`mailto:?${back}`, '_blank');
@@ -343,7 +379,7 @@ export class DashboardComponent implements OnInit {
         this.CopyUrlToClipBoard(copyUrl);
       } else {
         // other wise enable share and copy the url
-        this.EnableSharing(selected.save_id, token, (v) => {
+        this.EnableSharing(selected, token, (v) => {
           selected.shared = v.shared;
           if (selected.shared) {
             this.CopyUrlToClipBoard(copyUrl);
@@ -355,16 +391,143 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  startImportProcess() {
-    this.importFile.nativeElement.click();
-  }
-
-  loadESIMFile(event) {
+  /**
+   * Import the circuit in json format
+   * @param event Context of event
+   */
+  ImportCircuit(event) {
     const file: File = event.target.files[0];
+    let fileData;
+
     if (file) {
-      this.fileHandler.setFileInfo(file);
-      this.router.navigate(["simulator"], { queryParams: { import: file.name } });
+      const reader = new FileReader();
+      reader.readAsText(file);
+
+      reader.onload = async () => {
+        fileData = reader.result;
+        fileData = await JSON.parse(fileData);
+        this.SaveCircuit(fileData);
+        document.getElementById('importFileBTN')['value'] = null;
+      };
     }
   }
 
+  /**
+   * Export the circuit in json format
+   * @param selected selected Project
+   * @param offline Is Offline Circuit
+   */
+  ExportCircuit(selected, offline) {
+    let id = selected.save_id;
+    if (offline) {
+      if (typeof id !== 'number') {
+        id = Date.now();
+      }
+      SaveOffline.Read(id, this.DownloadFile);
+    } else {
+      const token = Login.getToken();
+      if (!token) {
+        AlertService.showAlert('Please Login');
+        return;
+      }
+      this.api.readProject(id, selected.branch, selected.version, token).subscribe(
+        data => {
+          // Converting data to required format
+          const obj = JSON.parse(data['data_dump']);
+          const project = {
+            name: data['name'],
+            description: data['description'],
+            image: data['base64_image'],
+            created_at: data['create_time'],
+          };
+          obj['id'] = id;
+          obj['project'] = project;
+          // Getting image data from image url
+          const image = document.createElement('img');
+          image.setAttribute('src', project.image);
+          image.setAttribute('visibility', 'hidden');
+          image.onload = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            canvas.getContext('2d').drawImage(image, 0, 0, image.width, image.height);
+            obj.project.image = canvas.toDataURL();
+            this.DownloadFile(obj);
+            image.parentElement.removeChild(image);
+            canvas.parentElement.removeChild(canvas);
+          };
+        },
+        (err: HttpErrorResponse) => {
+          if (err.status === 401) {
+            AlertService.showAlert('You are Not Authorized to download this circuit');
+            window.open('../../../', '_self');
+            return;
+          }
+          AlertService.showAlert('Something Went Wrong');
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  /**
+   * Creates virtual DOM element to download the content
+   * @param data Data in JSON format with meta details like id, project info
+   */
+  DownloadFile(data) {
+    const filename = (data.project.name ? data.project.name : 'Undefined') + '.json';
+    const fileJSON = JSON.stringify(data);
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(fileJSON));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+  /**
+   * Save the circuit in the database
+   * @param fileData JSON Object of the circuit
+   */
+  SaveCircuit(fileData) {
+    AlertService.showOptions('Where do you want to save it?', () => {
+      if (!(Login.getToken())) {
+        AlertService.showAlert('Please login! Before Login Save the Project Temporary.');
+        return;
+      }
+      // If project id is uuid (online circuit) then accordingly save or update
+      SaveOnline.SaveFromDashboard(fileData, this.api, (_) => {
+        this.readOnCloudItems();
+      }, SaveOnline.isUUID(fileData.id));
+    },
+      () => {
+        if (!(fileData.id) || typeof fileData.id !== 'number') {
+          fileData.id = Date.now();
+          SaveOffline.Save(fileData, (_) => {
+            this.readTempItems();
+          });
+        } else {
+          SaveOffline.Read(fileData.id, (data) => {
+            if (data) {
+              SaveOffline.Update(fileData, (_) => {
+                this.readTempItems();
+              });
+            } else {
+              SaveOffline.Save(fileData, (_) => {
+                this.readTempItems();
+              });
+            }
+          });
+        }
+      },
+      () => { }, 'On the Cloud', 'Temporarily in the browser', 'Cancel');
+  }
+
+  getUrl(circuit) {
+    let slug = `${circuit.save_id.replace(/-/g, '_')}-${circuit.branch.replace(/-/g, '_')}-${circuit.version.replace(/-/g, '_')}`;
+    slug += `-${circuit.name.substr(0, 50).replace(/ +/g, '-')}`;
+    // redirect to share url
+    return `${window.location.protocol}\\\\${window.location.host}/arduino/#/project/${slug}`;
+  }
 }
