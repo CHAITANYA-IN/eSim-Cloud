@@ -1,0 +1,38 @@
+<!-- <div #myModal class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">LTI Setup</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <select class="form-select" [(ngModel)]="details.model_schematic" required placeholder="Select a Model Simulation"
+          [compareWith]="compareIds" (selectionChange)="onSelectChanges($event)">
+          <ng-container *ngFor="let circuit of circuits">
+            <option [value]="circuit.id">{{ circuit.name }} of variation {{ circuit.branch }} saved at {{
+              getFormattedDate(circuit.save_time) }}
+            </option>
+          </ng-container>
+        </select>
+        <div>
+          <h6>Select an assignment type</h6>
+          <mat-radio-group aria-labelledby="assignment-options-label" class="assignment-options-group"
+            [(ngModel)]="ltiAssignmentType">
+            <mat-radio-button class="assignment-option" value="1">
+              <span>No Code, Only Circuit</span>
+            </mat-radio-button>
+            <mat-radio-button class="assignment-option" value="2">
+              <span>No Circuit, Only Code</span>
+            </mat-radio-button>
+            <mat-radio-button class="assignment-option" value="0">
+              <span>Both Circuit & Code</span>
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button type="submit" color="primary" (click)="checkAssignmentType()">Continue</button>
+      </div>
+    </div>
+  </div>
+</div> -->

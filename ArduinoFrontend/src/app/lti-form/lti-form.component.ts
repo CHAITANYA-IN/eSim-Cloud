@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { AlertService } from '../alert/alert-service/alert.service';
 import { Login } from '../Libs/Login';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { SaveOnline } from '../Libs/SaveOnline';
 
 
 export interface circuit {
@@ -46,6 +47,8 @@ export class LTIFormComponent implements OnInit {
   ) {
   }
 
+  @ViewChild('myModal') myModal;
+  ltiAssignmentType: string;
   hide: boolean = true;
   modelCircuit: circuit;
   studentCircuit: circuit;
@@ -384,5 +387,148 @@ export class LTIFormComponent implements OnInit {
   getFormattedDate(date: string) {
     const dateObj = new Date(date);
     return `${dateObj.getDate()}/${dateObj.getMonth()}/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}:${dateObj.getSeconds()}`;
+  }
+
+  checkAssignmentType() {
+    if(!this.lti_id) {
+      if(this.ltiAssignmentType === '1') {
+        // this.NoCodeOnlyCircuit();
+        console.log("No Code");
+      } else if(this.ltiAssignmentType === '2') {
+        // this.NoCircuitOnlyCode();
+        console.log("No Circuit");
+      } else if(this.ltiAssignmentType === '0') {
+        // this.ChangeBoth();
+        console.log("Change Both");
+      }
+      this.router.navigate(
+        [],
+        {
+          relativeTo: this.aroute,
+          queryParams: {
+            id: this.modelCircuit.save_id,
+            branch: this.modelCircuit.branch,
+            version: this.modelCircuit.version,
+          },
+        });
+    }
+    this.myModal.nativeElement.className = 'modal fade hide';
+  }
+
+  ChangeBoth(data, token) {
+    this.getAllVersions();
+  }
+
+  NoCircuitOnlyCode(data, token) {
+    const saveObj = {
+      data_dump: '',
+      is_arduino: true,
+      description: data.description,
+      name: data.name,
+      branch: 'lti-student',
+      version: SaveOnline.getRandomString(20),
+      base64_image: '',
+    };
+    let dataDump = JSON.parse(data.data_dump);
+    console.log(dataDump);
+    let newDataDump = {
+      'ArduinoUno': dataDump['ArduinoUno'],
+    }
+    for(var i = 0; i < newDataDump['ArduinoUno'].length; i++) {
+      newDataDump['ArduinoUno'][i] = {
+        'x':dataDump['ArduinoUno'][i]['x'],
+        'y':dataDump['ArduinoUno'][i]['y'],
+        'tx':dataDump['ArduinoUno'][i]['tx'],
+        'ty':dataDump['ArduinoUno'][i]['ty'],
+        'id':dataDump['ArduinoUno'][i]['id'],
+        'data':dataDump['ArduinoUno'][i]['data'],
+      }
+      newDataDump['ArduinoUno'][i]['data'] = {
+        'name': newDataDump['ArduinoUno'][i]['data']['name'],
+        'code': newDataDump['ArduinoUno'][i]['data']['code'],
+      }
+    }
+    saveObj.data_dump = JSON.stringify(newDataDump);
+    this.regenerateImage(saveObj, data['base64_image'], token);
+  }
+
+  NoCodeOnlyCircuit(data, token) {
+    const saveObj = {
+      data_dump: '',
+      is_arduino: true,
+      description: data.description,
+      name: data.name,
+      branch: 'lti-student',
+      version: SaveOnline.getRandomString(20),
+      base64_image: '',
+    };
+    let dataDump = JSON.parse(data.data_dump)
+    console.log(dataDump)
+    for(var i = 0; i < dataDump['ArduinoUno'].length; i++) {
+      dataDump['ArduinoUno'][i].data.code = "void setup() {\n\t\n}\n\nvoid loop() {\n\t\n}";
+    }
+    saveObj.data_dump = JSON.stringify(dataDump);
+    this.regenerateImage(saveObj, data['base64_image'], token);
+  }
+
+  setUpInitialSimulation() {
+    const token = Login.getToken();
+    if(token && !this.lti_id) {
+      this.api.readProject(this.modelCircuit.save_id, this.modelCircuit.branch ? this.modelCircuit.branch : 'master', 
+      this.modelCircuit.version ? this.modelCircuit.version : SaveOnline.getRandomString(20), 
+        token).subscribe(async (data: any) => {
+          if(this.ltiAssignmentType === '1') {
+            this.NoCodeOnlyCircuit(data, token);
+          } else if(this.ltiAssignmentType === '2') {
+            this.NoCircuitOnlyCode(data, token);
+          } else if(this.ltiAssignmentType === '0') {
+            this.ChangeBoth(data, token);
+          }
+        }, err => {
+          console.log(err);
+      });
+    }
+  }
+
+  regenerateImage(token, imageData, saveObj) {
+    // Getting image data from image url
+    // if(!environment.production) {
+    //   imageData = environment.API_URL + imageData;
+    // }
+    console.log(imageData);
+    const image = document.createElement('img');
+    image.setAttribute('src', imageData);
+    image.setAttribute('visibility', 'hidden');
+
+    image.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = image.width;
+      canvas.height = image.height;
+      canvas.getContext('2d').drawImage(image, 0, 0, image.width, image.height);
+      saveObj.base64_image = canvas.toDataURL();
+      // saveObj.base64_image = null;
+      console.log(saveObj);
+      this.SaveModifiedCircuit(saveObj, token);
+      image.parentElement.removeChild(image);
+      canvas.parentElement.removeChild(canvas);
+    };
+  }
+
+  SaveModifiedCircuit(saveObj, token) {
+    this.api.saveProject(saveObj, token).subscribe(res => {
+      this.studentCircuit = {
+        id: res['id'],
+        branch: res['branch'],
+        version: res['version'],
+        lti: res['lti_id'],
+        image: res['base64_image'],
+        description: res['description'],
+        save_id: res['save_id'],
+      };
+      console.log(res);
+      // Close the modal.
+    }, err => {
+      console.log(err);
+    });
   }
 }

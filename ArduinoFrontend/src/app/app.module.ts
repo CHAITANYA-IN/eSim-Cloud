@@ -36,6 +36,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewCodeComponent } from './lti-form/view-code/view-code.component';
+import { SetupModalComponent } from './lti-form/setup-modal/setup-modal.component';
 
 /**
  * Monaco OnLoad Function
@@ -77,6 +78,7 @@ const monacoConfig: NgxMonacoEditorConfig = {
     LTIFormComponent,
     SubmissionlistComponent,
     ViewCodeComponent,
+    SetupModalComponent,
   ],
   imports: [
     BrowserModule,
