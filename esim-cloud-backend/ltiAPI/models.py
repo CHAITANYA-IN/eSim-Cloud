@@ -1,12 +1,16 @@
 from django.db import models
 from saveAPI.models import StateSave
+from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth import get_user_model
 from simulationAPI.models import simulation
+import uuid
 
 
 # Create your models here.
 class lticonsumer(models.Model):
-    consumer_key = models.CharField(max_length=50, null=False, unique=True)
+    id = models.UUIDField(default=uuid.uuid4, editable=False,
+                          unique=True, primary_key=True)
+    consumer_key = models.CharField(max_length=50, null=False)
     secret_key = models.CharField(max_length=50, null=False)
     model_schematic = models.ForeignKey(to=StateSave, on_delete=models.CASCADE,
                                         related_name="model_schematic")
@@ -17,6 +21,8 @@ class lticonsumer(models.Model):
                                           related_name="initial_schematic")
     test_case = models.ForeignKey(
         to=simulation, on_delete=models.CASCADE, null=True, blank=True)
+    sim_params = ArrayField(
+        models.CharField(max_length=20), blank=True, null=True)
     scored = models.BooleanField(null=False)
 
     def __str__(self):
@@ -24,15 +30,18 @@ class lticonsumer(models.Model):
 
 
 class ltiSession(models.Model):
-    user_id = models.CharField(max_length=150)
-    lis_result_sourcedid = models.CharField(max_length=150, null=True)
-    lis_outcome_service_url = models.CharField(max_length=150)
-    oauth_nonce = models.CharField(max_length=150)
-    oauth_timestamp = models.CharField(max_length=150)
-    oauth_consumer_key = models.CharField(max_length=150)
-    oauth_signature_method = models.CharField(max_length=150)
-    oauth_version = models.CharField(max_length=150)
-    oauth_signature = models.CharField(max_length=150)
+    user_id = models.CharField(max_length=200)
+    lti_consumer = models.ForeignKey(to=lticonsumer,
+                                     on_delete=models.CASCADE, null=True)
+    lis_result_sourcedid = models.CharField(max_length=300, null=True)
+    lis_outcome_service_url = models.CharField(max_length=300)
+    oauth_nonce = models.CharField(max_length=300)
+    oauth_timestamp = models.CharField(max_length=300)
+    oauth_consumer_key = models.CharField(max_length=300)
+    oauth_signature_method = models.CharField(max_length=300)
+    oauth_version = models.CharField(max_length=300)
+    oauth_signature = models.CharField(max_length=300)
+    simulations = models.ManyToManyField(to=simulation)
 
 
 class Submission(models.Model):
@@ -43,6 +52,8 @@ class Submission(models.Model):
     ltisession = models.ForeignKey(
         to=ltiSession, on_delete=models.CASCADE, null=True)
     schematic = models.ForeignKey(to=StateSave, on_delete=models.CASCADE)
+    student_simulation = models.ForeignKey(to=simulation,
+                                           on_delete=models.CASCADE)
     lms_success = models.BooleanField(null=True)
 
     def __str__(self):

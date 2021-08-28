@@ -61,7 +61,7 @@ export const loadUser = () => (dispatch, getState) => {
       dispatch({
         type: actions.LOGIN_FAILED,
         payload: {
-          data: {}
+          data: []
         }
       })
     })
@@ -154,8 +154,13 @@ export const login = (username, password, toUrl) => {
             window.open('', '_self')
             window.close()
           } else {
-            window.open(toUrl, '_self')
-            localStorage.setItem('ard_redurl', '')
+            if (process.env.NODE_ENV === 'development') {
+              localStorage.setItem('ard_redurl', '')
+              window.location.href = toUrl + '?token=' + localStorage.getItem('esim_token')
+            } else {
+              window.open(toUrl, '_self')
+              localStorage.setItem('ard_redurl', '')
+            }
           }
         } else if (res.status === 400 || res.status === 403 || res.status === 401) {
           dispatch({
@@ -334,44 +339,7 @@ export const googleLogin = (host, toUrl) => {
       })
   }
 }
-
-// Handles api call for user's password recovery
-export const resetPassword = (email) => (dispatch) => {
-  const body = {
-    email: email
-  }
-
-  // add headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-
-  api.post('auth/users/reset_password/', body, config)
-    .then((res) => {
-      if (res.status >= 200 || res.status < 304) {
-        dispatch({
-          type: actions.RESET_PASSWORD_SUCCESSFUL,
-          payload: {
-            data: 'The password reset link has been sent to your email account.'
-          }
-        })
-        setTimeout(() => {
-          window.location.href = '/eda/#/login'
-        }, 2000)
-        // history.push('/login')
-      }
-    })
-    .catch((err) => {
-      var res = err.response
-      if ([400, 401, 403, 304].includes(res.status)) {
-        dispatch(resetPasswordError(res.data))
-      }
-    })
-}
-
-// Handles api call for user's password reset confirmation
+// Handles api call for user's password confirmation
 export const resetPasswordConfirm = (uid, token, newPassword, reNewPassword) => (dispatch) => {
   const body = {
     uid: uid,
@@ -418,4 +386,65 @@ export const resetPasswordConfirm = (uid, token, newPassword, reNewPassword) => 
         dispatch(resetPasswordConfirmError(message))
       }
     })
+}
+// Handles api call for user's password recovery
+export const resetPassword = (email) => (dispatch) => {
+  const body = {
+    email: email
+  }
+
+  // add headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  api.post('auth/users/reset_password/', body, config)
+    .then((res) => {
+      if (res.status >= 200 || res.status < 304) {
+        dispatch({
+          type: actions.RESET_PASSWORD_SUCCESSFUL,
+          payload: {
+            data: 'The password reset link has been sent to your email account.'
+          }
+        })
+        setTimeout(() => {
+          window.location.href = '/eda/#/login'
+        }, 2000)
+        // history.push('/login')
+      }
+    })
+    .catch((err) => {
+      var res = err.response
+      if ([400, 401, 403, 304].includes(res.status)) {
+        dispatch(resetPasswordError(res.data))
+      }
+    })
+}
+// API call for fetching user role.
+export const fetchRole = () => (dispatch, getState) => {
+  const token = getState().authReducer.token
+  // add headers
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  if (token) {
+    config.headers.Authorization = `Token ${token}`
+  } else {
+    dispatch({ type: actions.LOADING_FAILED })
+    return
+  }
+  api.get('workflow/role/', config)
+    .then((res) => {
+      console.log(res.data)
+      dispatch({
+        type: actions.ROLE_LOADED,
+        payload: {
+          data: res.data
+        }
+      })
+    }).catch(() => { console.log('Error') })
 }
