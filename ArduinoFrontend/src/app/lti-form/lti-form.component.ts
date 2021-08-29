@@ -151,6 +151,10 @@ export class LTIFormComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.getAllVersions();
+  }
+
   setForm(res: any) {
     this.form.setValue({
       consumer_key: res['consumer_key'],
@@ -169,6 +173,15 @@ export class LTIFormComponent implements OnInit {
   getStudentSimulation(value, callback) {
     this.studentCircuit = value ? this.circuits.filter(v => v.id === parseInt(value, 10))[0] : undefined;
     callback();
+  }
+
+  getModelSimulation(value, callback) {
+    this.modelCircuit = value ? this.circuits.filter(v => v.id === parseInt(value, 10))[0] : undefined;
+    callback();
+  }
+
+  onModelSelectChanges(event) {
+    this.getModelSimulation(event.value, () => console.log(this.studentCircuit));
   }
 
   onSelectChanges(event) {
