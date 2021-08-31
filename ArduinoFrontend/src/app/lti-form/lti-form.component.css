@@ -35,3 +35,7 @@ mat-form-field {
 .assignment-option {
   margin: 5px;
 }
+
+#modalImage {
+	height: 500px;
+}

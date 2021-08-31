@@ -90,3 +90,7 @@ button:hover {
   max-width: unset !important;
   margin: 12px !important;
 }
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+	z-index: 99999 !important;
+}

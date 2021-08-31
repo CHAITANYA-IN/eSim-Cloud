@@ -294,9 +294,6 @@ export class SimulatorComponent implements OnInit, OnDestroy {
     // Initializing window
     this.window = window;
   }
-  isLoaded() {
-    return Workspace.circuitLoaded;
-  }
   /**
    * Enable Move on Property Box
    */

@@ -45,6 +45,7 @@ class StateSaveView(APIView):
         if request.data.get('esim_libraries'):
             esim_libraries = json.loads(request.data.get('esim_libraries'))
         try:
+            print(request.data.get("save_id", None), request.data.get("branch"), request.data.get("version"))
             queryset = StateSave.objects.get(
                 save_id=request.data.get("save_id", None),
                 branch=request.data.get("branch"),

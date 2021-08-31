@@ -1,27 +1,31 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<button #modaltrigger type="button" class="btn btn-primary" style="display: none;" data-toggle="modal"
+  data-target="#myModal">
   Open modal
 </button>
 <div #myModal class="modal" id="myModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="max-width: 90%">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">LTI Setup</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-md-6">
-            <img [src]="modelCircuit.base64_image"/>
+            <img *ngIf="modelCircuit" id="modalImage" [src]="modelCircuit.base64_image" />
+            <canvas id="modelCanvas"></canvas>
           </div>
           <div class="col-md-6">
-            <select class="form-select" [(ngModel)]="details.model_schematic" required placeholder="Select a Model Simulation"
-              [compareWith]="compareIds" (selectionChange)="onModelSelectChanges($event)">
-              <ng-container *ngFor="let circuit of circuits">
-                <option [value]="circuit.id">{{ circuit.name }} of variation {{ circuit.branch }} saved at {{
-                  getFormattedDate(circuit.save_time) }}
-                </option>
-              </ng-container>
-            </select>
+            <mat-form-field *ngIf="circuits.length > 0">
+              <mat-select disableOptionCentering panelClass="custom-dialog-container"
+                [(ngModel)]="details.model_schematic" required placeholder="Select a Model Simulation"
+                [compareWith]="compareIds" (selectionChange)="onModelSelectChanges($event)">
+                <ng-container *ngFor="let circuit of circuits">
+                  <mat-option [value]="circuit.id">{{ circuit.name }} of variation {{ circuit.branch }} saved at {{
+                    getFormattedDate(circuit.save_time) }}
+                  </mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
             <div>
               <h6>Select an assignment type</h6>
               <mat-radio-group aria-labelledby="assignment-options-label" class="assignment-options-group"
@@ -41,67 +45,67 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button mat-raised-button type="submit" color="primary" (click)="setUpInitialSimulation()">Continue</button>
+        <button mat-raised-button data-dismiss="modal" (click)="redirectToLTICreation()" color="primary">Continue</button>
       </div>
     </div>
   </div>
 </div>
 <app-header title="Create LTI App"></app-header>
-<h3 *ngIf="modelCircuit" class="text-dark"
-  style="text-align:center;">LTI App for {{modelCircuit.name}}</h3>
+<h3 *ngIf="modelCircuit" class="text-dark" style="text-align:center;">LTI App for {{modelCircuit.name}}</h3>
 <div class="row mx-3">
   <div class="col-md-6">
-  <div class="card bg-light mt-2" *ngIf="modelCircuit">
-    <div class="card-header">
-      <h4 class="float-left">Model Simulation</h4>
-      <button class="float-right" type="button" mat-icon-button matTooltip="{{ modelCircuit.description }}">
-        <h5><i class="fas fa-info-circle"></i></h5>
-      </button>
+    <div class="card bg-light mt-2" *ngIf="modelCircuit">
+      <div class="card-header">
+        <h4 class="float-left">Model Simulation</h4>
+        <button class="float-right" type="button" mat-icon-button matTooltip="{{ modelCircuit.description }}">
+          <h5><i class="fas fa-info-circle"></i></h5>
+        </button>
+      </div>
+      <img class="img-fluid" [attr.src]="modelCircuit.base64_image" />
+      <ul class="list-group list-group-flush text-secondary">
+        <li class="list-group-item"><b>Branch:</b> {{ modelCircuit.branch }}</li>
+        <li class="list-group-item"><b>Version:</b> {{ modelCircuit.version }}</li>
+        <li class="list-group-item">
+          <mat-checkbox [(ngModel)]="modelCodeView">
+            <b>View Code</b>
+          </mat-checkbox>
+          <lti-view-code *ngIf="modelCodeView" [id]="circuit_id" [branch]="branch" [version]="version"></lti-view-code>
+        </li>
+      </ul>
+      <div class="card-footer">
+        <p class="card-text"><small class="text-muted">Last Modified: {{ getFormattedDate(modelCircuit.save_time)
+            }}</small></p>
+      </div>
     </div>
-    <img class="img-fluid" [attr.src]="modelCircuit.base64_image" />
-    <ul class="list-group list-group-flush text-secondary">
-      <li class="list-group-item"><b>Branch:</b> {{ modelCircuit.branch }}</li>
-      <li class="list-group-item"><b>Version:</b> {{ modelCircuit.version }}</li>
-      <li class="list-group-item">
-        <mat-checkbox [(ngModel)]="modelCodeView">
-          <b>View Code</b>
-        </mat-checkbox>
-        <lti-view-code *ngIf="modelCodeView" [id]="circuit_id" [branch]="branch" [version]="version"></lti-view-code>
-      </li>
-    </ul>
-    <div class="card-footer">
-      <p class="card-text"><small class="text-muted">Last Modified: {{ getFormattedDate(modelCircuit.save_time)
-          }}</small></p>
-    </div>
-  </div>
   </div>
   <div class="col-md-6">
-  <div class="card bg-light mt-2" *ngIf="studentCircuit">
-    <div class="card-header">
-      <h4 class="float-left">Student Simulation</h4>
-      <button class="float-right" type="button" mat-icon-button matTooltip="{{ modelCircuit.description }}">
-        <h5><i class="fas fa-info-circle"></i></h5>
-      </button>
-    </div>
-    <img class="card-img-top" [attr.src]="studentCircuit.base64_image" />
-    <ul class="list-group list-group-flush text-secondary">
-      <li class="list-group-item"><b>Branch:</b> {{ studentCircuit.branch }}</li>
-      <li class="list-group-item"><b>Version:</b> {{ studentCircuit.version }}</li>
-      <li class="list-group-item">
-        <mat-checkbox [(ngModel)]="studentCodeView">
-          <b>View Code</b>
-        </mat-checkbox>
-        <lti-view-code *ngIf="studentCodeView" [id]="studentCircuit.save_id" [branch]="studentCircuit.branch" [version]="studentCircuit.version"></lti-view-code>
-      </li>
-    </ul>
-    <div class="card-footer">
-      <p class="card-text"><small class="text-muted">Last Modified: {{ getFormattedDate(studentCircuit.save_time)
-          }}</small></p>
+    <div class="card bg-light mt-2" *ngIf="studentCircuit">
+      <div class="card-header">
+        <h4 class="float-left">Student Simulation</h4>
+        <button class="float-right" type="button" mat-icon-button matTooltip="{{ modelCircuit.description }}">
+          <h5><i class="fas fa-info-circle"></i></h5>
+        </button>
+      </div>
+      <img class="card-img-top" [attr.src]="studentCircuit.base64_image" />
+      <ul class="list-group list-group-flush text-secondary">
+        <li class="list-group-item"><b>Branch:</b> {{ studentCircuit.branch }}</li>
+        <li class="list-group-item"><b>Version:</b> {{ studentCircuit.version }}</li>
+        <li class="list-group-item">
+          <mat-checkbox [(ngModel)]="studentCodeView">
+            <b>View Code</b>
+          </mat-checkbox>
+          <lti-view-code *ngIf="studentCodeView" [id]="studentCircuit.save_id" [branch]="studentCircuit.branch"
+            [version]="studentCircuit.version"></lti-view-code>
+        </li>
+      </ul>
+      <div class="card-footer">
+        <p class="card-text"><small class="text-muted">Last Modified: {{ getFormattedDate(studentCircuit.save_time)
+            }}</small></p>
+      </div>
     </div>
   </div>
 </div>
-</div>
-<form [formGroup]="form">
+<form [formGroup]="ltiAssignmentType === '1' ? form1 : form">
   <div class="row">
     <div class="col-md-4">
       <mat-form-field>
@@ -111,7 +115,7 @@
         <mat-error *ngIf="form.controls['consumer_key'].errors?.minlength">String should be atleast 2
           characters long</mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field *ngIf="ltiAssignmentType !== '1'">
         <mat-select formControlName="initial_schematic" matInput required placeholder="Students's Simulation"
           [compareWith]="compareIds" (selectionChange)="onSelectChanges($event)">
           <mat-option>
@@ -162,10 +166,10 @@
     </div>
   </div>
   <div class="form-buttons">
-    <button class="ml-5" mat-raised-button color="primary" type="submit" (click)="onSubmit()"
-      *ngIf="!details.configExists" [disabled]="form.invalid">SAVE</button>
+    <button class="ml-5" mat-raised-button color="primary" type="submit" (click)="setUpInitialSimulation()"
+      *ngIf="!details.configExists" [disabled]="ltiAssignmentType === '1' ? form1.invalid : form.invalid">SAVE</button>
     <button class="ml-5" mat-raised-button color="primary" type="submit" (click)="onUpdate()"
-      *ngIf="details.configExists" [disabled]="form.invalid">UPDATE</button>
+      *ngIf="details.configExists" [disabled]="ltiAssignmentType === '1' ? form1.invalid : form.invalid">UPDATE</button>
     <button class="ml-5" mat-raised-button color="warn" type="button" *ngIf="details.configExists"
       (click)="onDelete()">DELETE</button>
     <button class="ml-5" mat-raised-button color="primary" type="button" [routerLink]="['/submissions']"
