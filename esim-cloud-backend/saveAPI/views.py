@@ -331,9 +331,10 @@ class UserSavesView(APIView):
         saved_state = StateSave.objects.filter(
             owner=self.request.user, is_arduino=False).order_by(
             "save_id", "-save_time").distinct("save_id")
-        submissions = Submission.objects.filter(student=self.request.user)
-        for submission in submissions:
-            saved_state = saved_state.exclude(save_id=submission.schematic.save_id)  # noqa
+        # Uncomment this if submissions are not required at the dashboard
+        # submissions = Submission.objects.filter(student=self.request.user)
+        # for submission in submissions:
+        #     saved_state = saved_state.exclude(save_id=submission.schematic.save_id)  # noqa
         try:
             serialized = StateSaveSerializer(saved_state, many=True)
             return Response(serialized.data)
@@ -484,8 +485,10 @@ class GalleryView(APIView):
 
     @swagger_auto_schema(responses={200: GallerySerializer})
     def get(self, request):
-
-        galleryset = Gallery.objects.all()
+        if (request.GET.get("is_arduino") == "true"):
+            galleryset = Gallery.objects.filter(is_arduino=True)
+        else:
+            galleryset = Gallery.objects.filter(is_arduino=False)
         try:
             serialized = GallerySerializer(galleryset, many=True)
             return Response(serialized.data)

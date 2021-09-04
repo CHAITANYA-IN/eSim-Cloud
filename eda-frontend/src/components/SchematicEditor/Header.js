@@ -32,6 +32,7 @@ import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
 import * as actions from '../../redux/actions/actions'
 import logo from '../../static/logo.png'
 import { setTitle, logout, setSchTitle, setSchShared, loadMinUser, setSchDescription } from '../../redux/actions/index'
+import { HomeDialog } from './ToolbarExtension'
 import queryString from 'query-string'
 
 const useStyles = makeStyles((theme) => ({
@@ -102,20 +103,20 @@ SimpleSnackbar.propTypes = {
   message: PropTypes.string
 }
 
-function Header (props) {
+function Header ({ gridRef }) {
   const history = useHistory()
   const classes = useStyles()
   const auth = useSelector(state => state.authReducer)
   const schSave = useSelector(state => state.saveSchematicReducer)
   const [anchorEl, setAnchorEl] = React.useState(null)
-
+  const xyz = gridRef
   const [loginDialog, setLoginDialog] = React.useState(false)
   const [logoutConfirm, setLogoutConfirm] = React.useState(false)
   const [reloginMessage, setReloginMessage] = React.useState('')
+
   const [ltiId, setLtiId] = React.useState(null)
   const [ltiNonce, setLtiNonce] = React.useState(null)
 
-  var homeURL = `${window.location.protocol}\\\\${window.location.host}/`
   const dispatch = useDispatch()
 
   const handleClick = (event) => {
@@ -199,6 +200,22 @@ function Header (props) {
 
   const handleShareClose = () => {
     setShareOpen(false)
+  }
+
+  // handle home dialog box
+  const [homeopen, setHomeOpen] = React.useState(false)
+  const [routeVal, setRouteVal] = React.useState(undefined)
+
+  const handleHomeOpen = (e) => {
+    e.preventDefault()
+
+    setRouteVal(e.target.attributes.value.value)
+    setHomeOpen(true)
+  }
+
+  const handleHomeClose = () => {
+    console.log(homeopen)
+    setHomeOpen(false)
   }
 
   // change saved schematic share status
@@ -358,7 +375,7 @@ function Header (props) {
         </Hidden>
 
         {/* Display last saved and shared option for saved schematics */}
-        {auth.isAuthenticated === true
+        {(!ltiId || !ltiNonce) && auth.isAuthenticated === true
           ? <>
             {(schSave.isSaved === true && schSave.details.save_time !== undefined)
               ? <Typography
@@ -430,13 +447,18 @@ function Header (props) {
               <Link
                 variant="button"
                 color="textPrimary"
-                onClick={() => { window.open(homeURL, '_self') }}
+                onClick={handleHomeOpen}
                 component={RouterLink}
                 className={classes.link}
                 style={{ marginLeft: '61%', marginRight: '20px' }}
+                value="home"
               >
                 Home
               </Link>
+
+              {gridRef && routeVal &&
+                <HomeDialog open={homeopen} gridRef={xyz} routeVal={routeVal} schSave={schSave} onClose={handleHomeClose} />
+              }
               <Link
                 variant="button"
                 color="textPrimary"
@@ -450,8 +472,10 @@ function Header (props) {
               <Link
                 variant="button"
                 color="textPrimary"
-                to="/gallery"
+                // to="/gallery"
+                onClick={handleHomeOpen}
                 component={RouterLink}
+                value="gallery"
                 style={{ marginRight: '20px' }}
 
               >
@@ -461,8 +485,9 @@ function Header (props) {
               <Link
                 variant="button"
                 color="textPrimary"
-                to="/simulator/ngspice"
+                onClick={handleHomeOpen}
                 component={RouterLink}
+                value="simulator/ngspice"
                 style={{ marginRight: '20px' }}
 
               >
@@ -477,7 +502,7 @@ function Header (props) {
                 variant="outlined"
                 target="_blank"
               >
-              Login
+                Login
               </Button>
             </>
             : (<>
@@ -485,13 +510,17 @@ function Header (props) {
               <Link
                 variant="button"
                 color="textPrimary"
-                onClick={() => { window.open(homeURL, '_self') }}
+                onClick={handleHomeOpen}
                 component={RouterLink}
                 className={classes.link}
+                value="home"
                 style={{ marginRight: '20px' }}
               >
                 Home
               </Link>
+              { gridRef && routeVal &&
+                <HomeDialog open={homeopen} gridRef={xyz} routeVal={routeVal} schSave={schSave} onClose={handleHomeClose} />
+              }
               <Link
                 variant="button"
                 color="textPrimary"
@@ -505,7 +534,9 @@ function Header (props) {
               <Link
                 variant="button"
                 color="textPrimary"
-                to="/gallery"
+                // to="/gallery"
+                value= "gallery"
+                onClick={handleHomeOpen}
                 component={RouterLink}
                 style={{ marginRight: '20px' }}
 
@@ -516,8 +547,9 @@ function Header (props) {
               <Link
                 variant="button"
                 color="textPrimary"
-                to="/simulator/ngspice"
+                onClick={handleHomeOpen}
                 component={RouterLink}
+                value="simulator/ngspice"
                 style={{ marginRight: '20px' }}
 
               >
@@ -526,7 +558,8 @@ function Header (props) {
               <Link
                 variant="button"
                 color="textPrimary"
-                to="/dashboard"
+                onClick={handleHomeOpen}
+                value="dashboard"
                 component={RouterLink}
                 style={{ marginRight: '20px' }}
               >
@@ -603,11 +636,15 @@ function Header (props) {
           className={classes.toolbarTitle}
           style={{ marginLeft: 'auto', color: 'red' }}
         >
-          Exam
+          Assignment
         </Typography>}
       </Toolbar>
     </>
   )
+}
+
+Header.propTypes = {
+  gridRef: PropTypes.object.isRequired
 }
 
 export default Header
