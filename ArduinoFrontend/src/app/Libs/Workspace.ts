@@ -7,7 +7,6 @@ import { isNull, isUndefined } from 'util';
 import { SaveOffline } from './SaveOffiline';
 import { Point } from './Point';
 import { UndoUtils } from './UndoUtils';
-import { EventEmitter } from '@angular/core';
 
 /**
  * Declare window so that custom created function don't throw error
@@ -56,12 +55,7 @@ export class Workspace {
    * If simulation is on progress or not
    */
   static simulating = false;
-  /**
-   * If circuit is loaded or not
-   */
-  static circuitLoaded = false;
-  static simulationStopped: EventEmitter<boolean> = new EventEmitter<boolean>();
-  static simulationStarted: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   /** function to zoom in workspace */
   static zoomIn() {
     Workspace.scale = Math.min(10, Workspace.scale + Workspace.zooomIncrement);
@@ -777,7 +771,7 @@ export class Workspace {
         // alert('something went wrong');
       }
     }
-    Workspace.circuitLoaded = true;
+
   }
 
   /** Function to delete component fro Workspace */
@@ -1034,8 +1028,6 @@ export class Workspace {
     // }
 
     // Update the simulation status
-    // Workspace.GetNodeValues();
-    Workspace.simulationStarted.emit(true);
     Workspace.simulating = true;
   }
   /**
@@ -1068,7 +1060,6 @@ export class Workspace {
     }
     // Update state and call callback
     Workspace.simulating = false;
-    Workspace.simulationStopped.emit(true);
     callback();
   }
   /**
@@ -1146,7 +1137,6 @@ export class Workspace {
       // Export JSON File & Download it
       const filename = `${name}.json`;
       const jsonStr = JSON.stringify(saveObj);
-
       const element = document.createElement('a');
       element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
       element.setAttribute('download', filename);
@@ -1175,34 +1165,4 @@ export class Workspace {
     return true;
   }
 
-  // static GetNodeValues() { //waveForm, time) {
-  //   const pointD13 = window.scope[Utils.componentBox['controllers'][0][0]][0].nodes[2];
-  //   const interval = setInterval(() => {
-  //     console.log(pointD13.value);
-  //     // [5, undefined];
-  //     // if (Workspace.isChartDataFull(waveForm, 20)) {
-  //     //   Workspace.removeLastElementFromChartDataAndLabel(waveForm, time);
-  //     // }
-  //     // waveForm[0].data.push(window.scope[Utils.componentBox['controllers'][0][0]][0].nodes[2].value);
-  //     // time.push(
-  //     //   Workspace.getLabel()
-  //     // );
-  //     if(!Workspace.simulating) {
-  //       clearInterval(interval);
-  //     }
-  //   }, 1);
-  // }
-
-  // static getLabel(){
-  //   return new Date().getSeconds();
-  // }
-
-  // static removeLastElementFromChartDataAndLabel(waveForm: ChartDataSets[], time: Label[]): void {
-  //   waveForm[0].data = waveForm[0].data.slice(1);
-  //   time = time.slice(1);
-  // }
-
-  // static isChartDataFull(chartData: ChartDataSets[], limit: number): boolean {
-  //   return chartData[0].data.length >= limit;
-  // }
 }

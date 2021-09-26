@@ -265,22 +265,22 @@ class LTIAuthView(APIView):
 
         protocol = 'https://' if request.is_secure() else 'http://'
         if(i.model_schematic.is_arduino):
-            # if(settings.DEBUG):
-            #     next_url = protocol + host + ":4200/#/simulator?id=" + \
-            #             str(i.initial_schematic.save_id) + "&branch=" \
-            #             + str(i.initial_schematic.branch) + "&version=" \
-            #             + str(i.initial_schematic.version) \
-            #             + "&lti_id=" + str(lti_session.id) + "&lti_user_id=" + \
-            #             lti_session.user_id \
-            #             + "&lti_nonce=" + lti_session.oauth_nonce
-            # else:
-            next_url = protocol + host + "/arduino/#simulator?id=" + \
-                    str(i.initial_schematic.save_id) + "&branch=" \
-                    + str(i.initial_schematic.branch) + "&version=" \
-                    + str(i.initial_schematic.version) \
-                    + "&lti_id=" + str(lti_session.id) + "&lti_user_id=" + \
-                    lti_session.user_id \
-                    + "&lti_nonce=" + lti_session.oauth_nonce
+            if(settings.DEBUG):
+                next_url = protocol + host + ":4200/#/simulator?id=" + \
+                        str(i.initial_schematic.save_id) + "&branch=" \
+                        + str(i.initial_schematic.branch) + "&version=" \
+                        + str(i.initial_schematic.version) \
+                        + "&lti_id=" + str(lti_session.id) + "&lti_user_id=" \
+                        + lti_session.user_id \
+                        + "&lti_nonce=" + lti_session.oauth_nonce
+            else:
+                next_url = protocol + host + "/arduino/#simulator?id=" + \
+                        str(i.initial_schematic.save_id) + "&branch=" \
+                        + str(i.initial_schematic.branch) + "&version=" \
+                        + str(i.initial_schematic.version) \
+                        + "&lti_id=" + str(lti_session.id) + "&lti_user_id=" \
+                        + lti_session.user_id \
+                        + "&lti_nonce=" + lti_session.oauth_nonce
         else:
             next_url = protocol + host + "/eda/#editor?id=" + \
                     str(i.initial_schematic.save_id) + "&branch=" \
@@ -326,6 +326,7 @@ class LTIPostGrade(APIView):
             sim = None
         schematic = StateSave.objects.get(save_id=request.data["schematic"])
         schematic.shared = True
+        schematic.is_submission = True
         schematic.save()
         if(sim):
             score, comparison_result = process_submission(
@@ -342,6 +343,7 @@ class LTIPostGrade(APIView):
             "student_simulation": sim
         }
         submission = Submission.objects.create(**submission_data)
+        print("after submission model created")
         xml = generate_request_xml(
             message_identifier(), 'replaceResult',
             lti_session.lis_result_sourcedid, submission.score)
@@ -350,6 +352,7 @@ class LTIPostGrade(APIView):
             post = post_message(
                 consumers(), lti_session.oauth_consumer_key,
                 lti_session.lis_outcome_service_url, xml)
+            print(post)
             if not post:
                 msg = 'An error occurred while saving your score.\
                      Please try again.'

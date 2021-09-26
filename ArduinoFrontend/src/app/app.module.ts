@@ -9,9 +9,9 @@ import { SimulatorComponent } from './simulator/simulator.component';
 
 import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor';
 import { CodeEditorComponent } from './code-editor/code-editor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
 import { ViewComponentInfoComponent } from './view-component-info/view-component-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExportfileComponent } from './exportfile/exportfile.component';
@@ -26,15 +26,16 @@ import { ExportJSONDialogComponent } from './export-jsondialog/export-jsondialog
 import { ExitConfirmDialogComponent } from './exit-confirm-dialog/exit-confirm-dialog.component';
 import { SaveProjectDialogComponent } from './simulator/save-project-dialog/save-project-dialog.component';
 import { OptionModalComponent } from './alert/option-modal/option-modal.component';
-import { MaterialModule } from './material/material.module';
-import { FormsService } from './forms.service';
 import { VersioningPanelComponent } from './versioning-panel/versioning-panel.component';
 import { CreateVariationDialogComponent } from './versioning-panel/create-variation-dialog/create-variation-dialog.component';
-import { LTIFormComponent } from './lti-form/lti-form.component';
-import { SubmissionlistComponent } from './submissionlist/submissionlist.component';
+import { SidePanelComponent } from './side-panel/side-panel.component';
+import { MaterialModule } from './common/material.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { SharedModule } from './common/SharedModule.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LTIFormComponent } from './lti-form/lti-form.component';
+import { SubmissionlistComponent } from './submissionlist/submissionlist.component';
 import { ViewCodeComponent } from './lti-form/view-code/view-code.component';
 import { SetupModalComponent } from './lti-form/setup-modal/setup-modal.component';
 
@@ -57,16 +58,15 @@ const monacoConfig: NgxMonacoEditorConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     SimulatorComponent,
     CodeEditorComponent,
     ViewComponentInfoComponent,
     ExportfileComponent,
     ComponentlistComponent,
     FrontPageComponent,
-    GalleryComponent,
+    // GalleryComponent,
     ViewProjectComponent,
-    HeaderComponent,
+    // HeaderComponent,
     AlertModalComponent,
     ConfirmModalComponent,
     OptionModalComponent,
@@ -84,19 +84,17 @@ const monacoConfig: NgxMonacoEditorConfig = {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MonacoEditorModule.forRoot(monacoConfig),
-    HttpClientModule,
-    MaterialModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     MaterialModule,
-    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule,   // shared module for Header component
     DragDropModule,
     ScrollingModule,
   ],
   // providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, FormsService],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
   entryComponents: [
     ViewComponentInfoComponent,
@@ -113,6 +111,6 @@ const monacoConfig: NgxMonacoEditorConfig = {
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  exports: [HeaderComponent]
+  exports: [AppComponent]
 })
 export class AppModule { }

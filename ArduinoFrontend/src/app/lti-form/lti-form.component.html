@@ -69,7 +69,7 @@
           <mat-checkbox [(ngModel)]="modelCodeView">
             <b>View Code</b>
           </mat-checkbox>
-          <lti-view-code *ngIf="modelCodeView" [id]="circuit_id" [branch]="branch" [version]="version"></lti-view-code>
+          <app-view-code *ngIf="modelCodeView" [id]="circuitId" [branch]="branch" [version]="version"></app-view-code>
         </li>
       </ul>
       <div class="card-footer">
@@ -94,8 +94,8 @@
           <mat-checkbox [(ngModel)]="studentCodeView">
             <b>View Code</b>
           </mat-checkbox>
-          <lti-view-code *ngIf="studentCodeView" [id]="studentCircuit.save_id" [branch]="studentCircuit.branch"
-            [version]="studentCircuit.version"></lti-view-code>
+          <app-view-code *ngIf="studentCodeView" [id]="studentCircuit.save_id" [branch]="studentCircuit.branch"
+            [version]="studentCircuit.version"></app-view-code>
         </li>
       </ul>
       <div class="card-footer">
@@ -117,7 +117,7 @@
       </mat-form-field>
       <mat-form-field *ngIf="ltiAssignmentType !== '1'">
         <mat-select formControlName="initial_schematic" matInput required placeholder="Students's Simulation"
-          [compareWith]="compareIds" (selectionChange)="onSelectChanges($event)">
+          [compareWith]="compareIds" (selectionChange)="onStudentSelectChanges($event)">
           <mat-option>
             None
           </mat-option>
@@ -173,7 +173,7 @@
     <button class="ml-5" mat-raised-button color="warn" type="button" *ngIf="details.configExists"
       (click)="onDelete()">DELETE</button>
     <button class="ml-5" mat-raised-button color="primary" type="button" [routerLink]="['/submissions']"
-      [queryParams]="{id: modelCircuit.save_id, branch: modelCircuit.branch, version: modelCircuit.version, scored: details.scored, lti: lti_id}"
+      [queryParams]="{id: modelCircuit.save_id, branch: modelCircuit.branch, version: modelCircuit.version, scored: details.scored, lti: lti}"
       *ngIf="details.configExists && details.scored">SUBMISSIONS</button>
     <button class="ml-5" mat-raised-button color="primary" type="button" [routerLink]="['/dashboard']">GO TO
       DASHBOARD</button>

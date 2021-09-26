@@ -52,7 +52,7 @@ class StateSaveSerializer(serializers.ModelSerializer):
                   'owner', 'shared', 'base64_image', 'create_time', 'version',
                   'branch', 'is_arduino', 'esim_libraries', 'project_id',
                   'project_version', 'project_branch', 'is_reported',
-                  'id', 'lti_id')
+                  'id', 'lti_id', 'is_submission')
 
     def get_lti_id(self, obj):
         save_id = obj.save_id
@@ -81,7 +81,8 @@ class SaveListSerializer(serializers.ModelSerializer):
         fields = ('save_time', 'save_id', 'name', 'description',
                   'shared', 'base64_image', 'create_time', 'version',
                   'branch', 'esim_libraries', 'project_id', 'project_version',
-                  'project_branch', 'is_reported', 'id', 'lti_id')
+                  'project_branch', 'is_reported', 'id', 'lti_id',
+                  'is_submission')
 
     def get_lti_id(self, obj):
         save_id = obj.save_id
@@ -101,5 +102,5 @@ class GallerySerializer(serializers.ModelSerializer):
         model = Gallery
         fields = (
             'save_id', 'data_dump', 'name',
-            'description', 'media', 'shared', 'esim_libraries'
+            'description', 'media', 'shared', 'esim_libraries', 'is_arduino'
             )

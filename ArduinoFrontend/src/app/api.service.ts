@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../environments/environment';
 import { Login } from './Libs/Login';
 import { ActivatedRoute } from '@angular/router';
 
 /**
  * Class For handlind API.
+ */
+/**
+ * Injectable
  */
 @Injectable({
   providedIn: 'root'
@@ -20,6 +23,9 @@ export class ApiService {
    * Constructor for api
    * @param http For http request & response
    */
+
+  isAuthenticated = new Subject<boolean>();
+
   constructor(
     private http: HttpClient,
     public aroute: ActivatedRoute
@@ -68,6 +74,21 @@ export class ApiService {
     }
     return this.http.post(`${this.url}api/save`, data, {
       headers: this.httpHeaders(token),
+    });
+  }
+
+  /**
+   * Save Project to Gallery
+   * @param data The Project gallery data
+   * @param token Auth Token
+   */
+  saveProjectToGallery(data: any, token: string) {
+    return this.http.post(`${this.url}api/save/gallery/` + data.save_id, data, {
+      headers: new HttpHeaders({
+        // 'Content-Type': 'application/json',
+        Authorization: `Token ${token}`,
+        // 'Access-Control-Allow-Origin': '*',
+      })
     });
   }
   /**
@@ -171,7 +192,29 @@ export class ApiService {
    * Fetch Samples
    */
   fetchSamples(): Observable<any> {
-    return this.http.get('./assets/samples/Samples.json');
+    // return this.http.get('./assets/samples/Samples.json');
+    return this.http.get(`${this.url}api/save/gallery?is_arduino=true`);
+  }
+
+  /**
+   * Fetchs single project  gallery to simulator
+   * @param id  unique id for gallery circuit
+   */
+  fetchSingleProjectToGallery(id: any) {
+    return this.http.get(`${this.url}api/save/gallery/` + id);
+  }
+
+  /**
+   * Deletes single project from gallery
+   * @param id Project id
+   * @param token  Auth Token
+   */
+  deleteProjectFromGallery(id: any, token: any) {
+    return this.http.delete(`${this.url}api/save/gallery/` + id, {
+      headers: new HttpHeaders({
+        Authorization: `Token ${token}`,
+      })
+    });
   }
 
   /**
@@ -211,33 +254,36 @@ export class ApiService {
   }
 
   /**
- * Logout
- */
-  logout(token): void {
-    console.log(token);
-    this.http.post(`${this.url}api/auth/token/logout/`, '', {
-      headers: new HttpHeaders({
-        Authorization: `Token ${token}`
-      })
-    }).subscribe(() => { Login.logout(); }, (e) => { console.log(e); });
-  }
-
+   * Request to fetch LTI App details for id of the given circuit
+   * @param id save_id of the circuit
+   * @param token Auth Token
+   */
   existLTIURL(id: string, token: string) {
     return this.http.get(`${this.url}api/lti/exist/${id}`, {
       headers: this.httpHeaders(token),
     });
   }
 
+  /**
+   * Request to save LTI details at the backend
+   * @param token Auth Token
+   * @param data LTI Details containing ids of model and student circuits, consumer and secret keys
+   */
   saveLTIDetails(token: string, data: any) {
     return this.http.post(`${this.url}api/lti/build/`, data, {
       headers: this.httpHeaders(token),
     });
   }
 
+  /**
+   * Requests for deleting the LTI app
+   * @param id Model Circuit ID Number
+   * @param token Auth Token
+   */
   removeLTIDetails(id: number, token: string) {
     return this.http.delete(`${this.url}api/lti/delete/${id}`, {
       headers: new HttpHeaders({
-        'Authorization': `Token ${token}`,
+        Authorization: `Token ${token}`,
       })
     });
   }
@@ -250,8 +296,10 @@ export class ApiService {
         this.aroute.queryParams.subscribe((paramData: any) => {
           if (paramData.token != null) {
             localStorage.setItem('esim_token', paramData.token);
+            this.isAuthenticated.next(true);
             reslove(1);
           } else if (Login.getToken()) {
+            this.isAuthenticated.next(true);
             reslove(1);
           }
         });
@@ -261,21 +309,66 @@ export class ApiService {
     });
   }
 
+  /**
+   * Request to update LTI details at the backend
+   * @param token Auth Token
+   * @param data LTI Details containing ids of model and student circuits, consumer and secret keys
+   */
   updateLTIDetails(token: string, data: any) {
     return this.http.post(`${this.url}api/lti/update/`, data, {
       headers: this.httpHeaders(token),
-    })
+    });
   }
 
+  /**
+   * Requests for creating submission for the circuit with given id
+   * @param token Auth Token
+   * @param data LTI data (contains save_id, lti_id, lti_nonce, lti_user_id)
+   */
   submitCircuit(token: string, data: any) {
     return this.http.post(`${this.url}api/lti/submit/`, data, {
       headers: this.httpHeaders(token),
     });
   }
 
+  /**
+   * Requests to retrieve all the submissions for given LTI App from backend
+   * @param id save_id of the circuit
+   * @param branch branch of the circuit
+   * @param version version of the circuit
+   * @param token Auth Token
+   */
   getSubmissions(id: string, branch: string, version: string, token: string) {
     return this.http.get(`${this.url}api/lti/submissions/${id}/${version}/${branch}`, {
       headers: this.httpHeaders(token),
-    })
+    });
+  }
+
+  /**
+   * Logout
+   */
+  logout(token): void {
+    console.log(token);
+    this.http.post(`${this.url}api/auth/token/logout/`, '', {
+      headers: new HttpHeaders({
+        Authorization: `Token ${token}`
+      })
+    }).subscribe(() => {
+      this.isAuthenticated.next(false);
+      Login.logout();
+    }, (e) => { console.log(e); });
+  }
+  /**
+   * Specific User Role.
+   * @param token Auth Token
+   */
+  getRole(token): Observable<any> {
+    return this.http.get(`${this.url}api/workflow/role/`, {
+      headers: new HttpHeaders({
+        // 'Content-Type': 'application/json',
+        Authorization: `Token ${token}`,
+        // 'Access-Control-Allow-Origin': '*',
+      })
+    });
   }
 }
