@@ -15,7 +15,7 @@
             <canvas id="modelCanvas"></canvas>
           </div>
           <div class="col-md-6">
-            <mat-form-field *ngIf="circuits.length > 0">
+            <mat-form-field *ngIf="circuits && circuits.length > 0">
               <mat-select disableOptionCentering panelClass="custom-dialog-container"
                 [(ngModel)]="details.model_schematic" required placeholder="Select a Model Simulation"
                 [compareWith]="compareIds" (selectionChange)="onModelSelectChanges($event)">
@@ -29,7 +29,7 @@
             <div>
               <h6>Select an assignment type</h6>
               <mat-radio-group aria-labelledby="assignment-options-label" class="assignment-options-group"
-                [(ngModel)]="ltiAssignmentType">
+                [(ngModel)]="details.type">
                 <mat-radio-button class="assignment-option" value="1">
                   <span>Write code for given circuit</span>
                 </mat-radio-button>
@@ -45,7 +45,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button mat-raised-button data-dismiss="modal" (click)="redirectToLTICreation()" color="primary">Continue</button>
+        <button mat-raised-button data-dismiss="modal" style="float: left;" onclick="window.history.back()" color="warn">GO TO DASHBOARD</button>
+        <button mat-raised-button data-dismiss="modal" style="float: right;" (click)="redirectToLTICreation()" color="primary">CONTINUE</button>
       </div>
     </div>
   </div>
@@ -105,7 +106,7 @@
     </div>
   </div>
 </div>
-<form [formGroup]="ltiAssignmentType === '1' ? form1 : form">
+<form [formGroup]="details.type === '1' ? form1 : form">
   <div class="row">
     <div class="col-md-4">
       <mat-form-field>
@@ -115,7 +116,7 @@
         <mat-error *ngIf="form.controls['consumer_key'].errors?.minlength">String should be atleast 2
           characters long</mat-error>
       </mat-form-field>
-      <mat-form-field *ngIf="ltiAssignmentType !== '1'">
+      <mat-form-field *ngIf="details.type !== '1'">
         <mat-select formControlName="initial_schematic" matInput required placeholder="Students's Simulation"
           [compareWith]="compareIds" (selectionChange)="onStudentSelectChanges($event)">
           <mat-option>
@@ -164,12 +165,20 @@
         </mat-checkbox>
       </div>
     </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Simulation Parameters</mat-label>
+        <mat-select [formControl]="simParams" multiple>
+          <mat-option *ngFor="let pin of pins" [value]="pin.pin">{{pin.pin}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
   <div class="form-buttons">
     <button class="ml-5" mat-raised-button color="primary" type="submit" (click)="setUpInitialSimulation()"
-      *ngIf="!details.configExists" [disabled]="ltiAssignmentType === '1' ? form1.invalid : form.invalid">SAVE</button>
+      *ngIf="!details.configExists" [disabled]="details.type === '1' ? form1.invalid : form.invalid">SAVE</button>
     <button class="ml-5" mat-raised-button color="primary" type="submit" (click)="onUpdate()"
-      *ngIf="details.configExists" [disabled]="ltiAssignmentType === '1' ? form1.invalid : form.invalid">UPDATE</button>
+      *ngIf="details.configExists" [disabled]="details.type === '1' ? form1.invalid : form.invalid">UPDATE</button>
     <button class="ml-5" mat-raised-button color="warn" type="button" *ngIf="details.configExists"
       (click)="onDelete()">DELETE</button>
     <button class="ml-5" mat-raised-button color="primary" type="button" [routerLink]="['/submissions']"

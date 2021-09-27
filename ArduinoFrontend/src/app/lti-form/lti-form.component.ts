@@ -36,7 +36,8 @@ export interface LTIDetails {
   test_case: string;
   scored: boolean;
   id: string;
-  sim_params: string[];
+  type: string;
+  simParams: string[];
 }
 
 /**
@@ -66,10 +67,6 @@ export class LTIFormComponent implements OnInit {
    * Reference of the button to trigger the modal
    */
   @ViewChild('modaltrigger') modaltrigger: ElementRef;
-  /**
-   * Holds the current LTI assignment type
-   */
-  ltiAssignmentType = "";
   /**
    * Toggles input type of secret key form-field
    */
@@ -129,7 +126,8 @@ export class LTIFormComponent implements OnInit {
     test_case: null,
     scored: false,
     id: '',
-    sim_params: [],
+    type: null,
+    simParams: [],
   };
   /**
    * Defines LTI Form Controls and Validators
@@ -148,12 +146,14 @@ export class LTIFormComponent implements OnInit {
     score: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(1)]),
     test_case: new FormControl(''),
     scored: new FormControl(true),
-  })
+  });
+  pins = [];
 
   /**
    * On Init Callback
    */
   ngOnInit() {
+    window['onpopstate'] = this.redirectToDashboard;
     document.documentElement.style.overflow = 'auto';
     document.title = 'LTI | Arduino on Cloud';
     this.aroute.queryParams.subscribe(v => {
@@ -169,6 +169,8 @@ export class LTIFormComponent implements OnInit {
       this.version = v.version;
       this.lti = v.lti;
       this.onClear();
+      this.getAllVersions();
+      this.getPins();
       if (this.lti) {
         this.details.id = this.lti;
         // Get details of the LTI App.
@@ -196,7 +198,7 @@ export class LTIFormComponent implements OnInit {
             this.studentCircuit['base64_image'] = environment.API_URL + this.studentCircuit['base64_image'];
           }
           this.setForm(res);
-          const formData = this.ltiAssignmentType === '1' ? this.form1.value : this.form.value;
+          const formData = this.details.type === '1' ? this.form1.value : this.form.value;
           this.details = {
             ...formData,
             model_schematic: res['model_schematic'],
@@ -204,18 +206,15 @@ export class LTIFormComponent implements OnInit {
             consumerError: '',
             configExists: true,
           };
-          this.getAllVersions();
           this.configUrl = this.details.config_url;
         }, err => {
           if (err.status === 404) {
             this.details.configExists = false;
           }
           console.log(err);
-          this.getAllVersions();
         });
       } else {
         this.details.configExists = false;
-        this.getAllVersions();
       }
     });
     if (!this.lti) {
@@ -225,9 +224,6 @@ export class LTIFormComponent implements OnInit {
 
   ngAfterViewInit() {
     this.getAllVersions();
-    // if (!this.lti) {
-    //   this.modaltrigger.nativeElement.click();
-    // }
   }
 
   /**
@@ -235,7 +231,7 @@ export class LTIFormComponent implements OnInit {
    * @param res Object with interface similar to form property
    */
   setForm(res: any) {
-    if (this.ltiAssignmentType === '1') {
+    if (this.details.type === '1') {
       this.form1.setValue({
         consumer_key: res['consumer_key'],
         secret_key: res['secret_key'],
@@ -292,7 +288,7 @@ export class LTIFormComponent implements OnInit {
    * Called on changing option in select form field for student simulation
    * @param event Event data on changing select form field for student simulation
    */
-  onSelectChanges(event) {
+  onStudentSelectChanges(event) {
     this.getStudentSimulation(event.value);
   }
 
@@ -300,12 +296,12 @@ export class LTIFormComponent implements OnInit {
    * Called on clicking Save button from LTI Form
    */
   onSubmit() {
-    const formValidity = this.ltiAssignmentType === '1' ? this.form1.valid : this.form.valid
+    const formValidity = this.details.type === '1' ? this.form1.valid : this.form.valid
     if (formValidity) {
       if (!this.details.scored) {
         this.details.score = null;
       }
-      const formDetails = this.ltiAssignmentType === '1' ? this.form1.value : this.form.value
+      const formDetails = this.details.type === '1' ? this.form1.value : this.form.value
       this.details = {
         ...this.details,
         ...formDetails,
@@ -313,7 +309,7 @@ export class LTIFormComponent implements OnInit {
         initial_schematic: this.studentCircuit.id,
         model_schematic: this.modelCircuit.id,
         test_case: null,
-        sim_params: [],
+        simParams: [],
         configExists: false,
       };
       const token = Login.getToken();
@@ -325,7 +321,7 @@ export class LTIFormComponent implements OnInit {
         delete data['id'];
         this.api.saveLTIDetails(token, data).subscribe(res => {
           this.setForm(res);
-          const formDetails = this.ltiAssignmentType === '1' ? this.form1.value : this.form.value
+          const formDetails = this.details.type === '1' ? this.form1.value : this.form.value
           this.details = {
             ...formDetails,
             initial_schematic: res['initial_schematic'],
@@ -373,9 +369,10 @@ export class LTIFormComponent implements OnInit {
           consumerError: '',
           score: 0,
           test_case: null,
-          sim_params: [],
+          simParams: [],
           scored: false,
           id: '',
+          type: '',
         };
         this.studentCircuit = undefined;
         this.configUrl = this.details.config_url;
@@ -402,11 +399,11 @@ export class LTIFormComponent implements OnInit {
    */
   onUpdate() {
     const token = Login.getToken();
-    const formValidity = this.ltiAssignmentType === '1' ? this.form1.valid : this.form.valid
+    const formValidity = this.details.type === '1' ? this.form1.valid : this.form.valid
     if (!formValidity && !token) {
       return;
     }
-    const formDetails = this.ltiAssignmentType === '1' ? this.form1.value : this.form.value
+    const formDetails = this.details.type === '1' ? this.form1.value : this.form.value
     this.details = {
       ...this.details,
       ...formDetails,
@@ -414,7 +411,7 @@ export class LTIFormComponent implements OnInit {
       configExists: this.details.configExists,
       model_schematic: this.details.model_schematic,
       test_case: null,
-      sim_params: [],
+      simParams: [],
     };
     if (!this.details.scored) {
       this.details.score = null;
@@ -425,7 +422,7 @@ export class LTIFormComponent implements OnInit {
     delete data['consumerError'];
     this.api.updateLTIDetails(token, data).subscribe(res => {
       this.setForm(res);
-      const formDetails = this.ltiAssignmentType === '1' ? this.form1.value : this.form.value
+      const formDetails = this.details.type === '1' ? this.form1.value : this.form.value
       this.details = {
         ...this.details,
         ...formDetails,
@@ -458,7 +455,7 @@ export class LTIFormComponent implements OnInit {
    * Called to reset LTI Form
    */
   onClear() {
-    if (this.ltiAssignmentType === '1') {
+    if (this.details.type === '1') {
       this.form1.reset();
     } else {
       this.form.reset();
@@ -539,6 +536,11 @@ export class LTIFormComponent implements OnInit {
     return str;
   }
 
+  redirectToDashboard() {
+    let div = document.querySelector('div.modal-backdrop.show');
+    if (div) div.parentElement.removeChild(div);
+  }
+
   redirectToLTICreation() {
     this.router.navigate(
       [],
@@ -554,13 +556,13 @@ export class LTIFormComponent implements OnInit {
 
   checkAssignmentType() {
     if (!this.lti) {
-      if (this.ltiAssignmentType === '1') {
+      if (this.details.type === '1') {
         // this.NoCodeOnlyCircuit();
         console.log("No Code");
-      } else if (this.ltiAssignmentType === '2') {
+      } else if (this.details.type === '2') {
         // this.NoCircuitOnlyCode();
         console.log("No Circuit");
-      } else if (this.ltiAssignmentType === '0') {
+      } else if (this.details.type === '0') {
         // this.ChangeBoth();
         console.log("Change Both");
       }
@@ -588,7 +590,7 @@ export class LTIFormComponent implements OnInit {
       is_arduino: true,
       description: data.description,
       name: data.name,
-      branch: `t${this.ltiAssignmentType}t${Date.now()}`,
+      branch: 'ltidesigncircuit',
       version: SaveOnline.getRandomString(20),
       base64_image: '',
     };
@@ -621,7 +623,7 @@ export class LTIFormComponent implements OnInit {
       is_arduino: true,
       description: data.description,
       name: data.name,
-      branch: `t${this.ltiAssignmentType}t${Date.now()}`,
+      branch: 'ltiwritecode',
       version: SaveOnline.getRandomString(20),
       base64_image: '',
     };
@@ -640,11 +642,11 @@ export class LTIFormComponent implements OnInit {
       this.api.readProject(this.modelCircuit.save_id, this.modelCircuit.branch ? this.modelCircuit.branch : 'master',
         this.modelCircuit.version ? this.modelCircuit.version : SaveOnline.getRandomString(20),
         token).subscribe(async (data: any) => {
-          if (this.ltiAssignmentType === '1') {
+          if (this.details.type === '1') {
             this.NoCodeOnlyCircuit(data, token);
-          } else if (this.ltiAssignmentType === '2') {
+          } else if (this.details.type === '2') {
             this.NoCircuitOnlyCode(data, token);
-          } else if (this.ltiAssignmentType === '0') {
+          } else if (this.details.type === '0') {
             this.ChangeBoth(data, token);
           }
         }, err => {
@@ -660,10 +662,14 @@ export class LTIFormComponent implements OnInit {
     document.body.appendChild(image);
     image.setAttribute('src', imageData);
     image.setAttribute('visibility', 'hidden');
-
-    image.onload = () => {
+    if(!environment.production) {
+      image.crossOrigin = 'anonymous';
+    }
+    image.onload = (res) => {
+      console.log("Image data", res);
       const canvas = document.createElement('canvas');
       document.body.appendChild(canvas);
+      canvas.id = "holder"
       canvas.width = image.width;
       canvas.height = image.height;
       canvas.setAttribute('visibility', 'hidden');
@@ -702,5 +708,13 @@ export class LTIFormComponent implements OnInit {
 
   getImageUrl(location: string) {
     return environment.API_URL + location;
+  }
+
+  getSimulations() {
+
+  }
+
+  getPins() {
+    this.pins = [{pin:'D2'}, {pin:'D3'}, {pin:'D4'}, {pin:'D5'}, {pin:'D6'}, {pin:'D7'}]
   }
 }
