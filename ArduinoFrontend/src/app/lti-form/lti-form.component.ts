@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { AlertService } from '../alert/alert-service/alert.service';
 import { Login } from '../Libs/Login';
@@ -48,7 +48,7 @@ export interface LTIDetails {
   templateUrl: './lti-form.component.html',
   styleUrls: ['./lti-form.component.css']
 })
-export class LTIFormComponent implements OnInit {
+export class LTIFormComponent implements OnInit, AfterViewInit {
 
   /**
    * LTI Form Component Constructor
@@ -139,10 +139,10 @@ export class LTIFormComponent implements OnInit {
     test_case: new FormControl(''),
     initial_schematic: new FormControl(0, Validators.required),
     scored: new FormControl(true),
-  })
+  });
   form1: FormGroup = new FormGroup({
-    consumer_key: new FormControl("", [Validators.required, Validators.minLength(2)]),
-    secret_key: new FormControl("", [Validators.required, Validators.minLength(2)]),
+    consumer_key: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    secret_key: new FormControl('', [Validators.required, Validators.minLength(2)]),
     score: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(1)]),
     test_case: new FormControl(''),
     scored: new FormControl(true),
@@ -296,12 +296,12 @@ export class LTIFormComponent implements OnInit {
    * Called on clicking Save button from LTI Form
    */
   onSubmit() {
-    const formValidity = this.details.type === '1' ? this.form1.valid : this.form.valid
+    const formValidity = this.details.type === '1' ? this.form1.valid : this.form.valid;
     if (formValidity) {
       if (!this.details.scored) {
         this.details.score = null;
       }
-      const formDetails = this.details.type === '1' ? this.form1.value : this.form.value
+      let formDetails = this.details.type === '1' ? this.form1.value : this.form.value;
       this.details = {
         ...this.details,
         ...formDetails,
@@ -321,7 +321,7 @@ export class LTIFormComponent implements OnInit {
         delete data['id'];
         this.api.saveLTIDetails(token, data).subscribe(res => {
           this.setForm(res);
-          const formDetails = this.details.type === '1' ? this.form1.value : this.form.value
+          formDetails = this.details.type === '1' ? this.form1.value : this.form.value;
           this.details = {
             ...formDetails,
             initial_schematic: res['initial_schematic'],
@@ -399,11 +399,11 @@ export class LTIFormComponent implements OnInit {
    */
   onUpdate() {
     const token = Login.getToken();
-    const formValidity = this.details.type === '1' ? this.form1.valid : this.form.valid
+    const formValidity = this.details.type === '1' ? this.form1.valid : this.form.valid;
     if (!formValidity && !token) {
       return;
     }
-    const formDetails = this.details.type === '1' ? this.form1.value : this.form.value
+    let formDetails = this.details.type === '1' ? this.form1.value : this.form.value;
     this.details = {
       ...this.details,
       ...formDetails,
@@ -422,7 +422,7 @@ export class LTIFormComponent implements OnInit {
     delete data['consumerError'];
     this.api.updateLTIDetails(token, data).subscribe(res => {
       this.setForm(res);
-      const formDetails = this.details.type === '1' ? this.form1.value : this.form.value
+      formDetails = this.details.type === '1' ? this.form1.value : this.form.value;
       this.details = {
         ...this.details,
         ...formDetails,
@@ -537,8 +537,10 @@ export class LTIFormComponent implements OnInit {
   }
 
   redirectToDashboard() {
-    let div = document.querySelector('div.modal-backdrop.show');
-    if (div) div.parentElement.removeChild(div);
+    const div = document.querySelector('div.modal-backdrop.show');
+    if (div) {
+      div.parentElement.removeChild(div);
+    }
   }
 
   redirectToLTICreation() {
@@ -558,13 +560,13 @@ export class LTIFormComponent implements OnInit {
     if (!this.lti) {
       if (this.details.type === '1') {
         // this.NoCodeOnlyCircuit();
-        console.log("No Code");
+        console.log('No Code');
       } else if (this.details.type === '2') {
         // this.NoCircuitOnlyCode();
-        console.log("No Circuit");
+        console.log('No Circuit');
       } else if (this.details.type === '0') {
         // this.ChangeBoth();
-        console.log("Change Both");
+        console.log('Change Both');
       }
       this.router.navigate(
         [],
@@ -594,24 +596,24 @@ export class LTIFormComponent implements OnInit {
       version: SaveOnline.getRandomString(20),
       base64_image: '',
     };
-    let dataDump = JSON.parse(data.data_dump);
+    const dataDump = JSON.parse(data.data_dump);
     console.log(dataDump);
-    let newDataDump = {
-      'ArduinoUno': dataDump['ArduinoUno'],
-    }
-    for (var i = 0; i < newDataDump['ArduinoUno'].length; i++) {
+    const newDataDump = {
+      ArduinoUno: dataDump['ArduinoUno'],
+    };
+    for (let i = 0; i < newDataDump['ArduinoUno'].length; i++) {
       newDataDump['ArduinoUno'][i] = {
-        'x': dataDump['ArduinoUno'][i]['x'],
-        'y': dataDump['ArduinoUno'][i]['y'],
-        'tx': dataDump['ArduinoUno'][i]['tx'],
-        'ty': dataDump['ArduinoUno'][i]['ty'],
-        'id': dataDump['ArduinoUno'][i]['id'],
-        'data': dataDump['ArduinoUno'][i]['data'],
-      }
+        x: dataDump['ArduinoUno'][i]['x'],
+        y: dataDump['ArduinoUno'][i]['y'],
+        tx: dataDump['ArduinoUno'][i]['tx'],
+        ty: dataDump['ArduinoUno'][i]['ty'],
+        id: dataDump['ArduinoUno'][i]['id'],
+        data: dataDump['ArduinoUno'][i]['data'],
+      };
       newDataDump['ArduinoUno'][i]['data'] = {
-        'name': newDataDump['ArduinoUno'][i]['data']['name'],
-        'code': newDataDump['ArduinoUno'][i]['data']['code'],
-      }
+        name: newDataDump['ArduinoUno'][i]['data']['name'],
+        code: newDataDump['ArduinoUno'][i]['data']['code'],
+      };
     }
     saveObj.data_dump = JSON.stringify(newDataDump);
     this.regenerateImage(saveObj, data['base64_image'], token);
@@ -627,10 +629,10 @@ export class LTIFormComponent implements OnInit {
       version: SaveOnline.getRandomString(20),
       base64_image: '',
     };
-    let dataDump = JSON.parse(data.data_dump);
+    const dataDump = JSON.parse(data.data_dump);
     console.log(dataDump);
-    for (var i = 0; i < dataDump['ArduinoUno'].length; i++) {
-      dataDump['ArduinoUno'][i].data.code = "void setup() {\n\t\n}\n\nvoid loop() {\n\t\n}";
+    for (const arduino of dataDump['ArduinoUno']) {
+      arduino.data.code = 'void setup() {\n\t\n}\n\nvoid loop() {\n\t\n}';
     }
     saveObj.data_dump = JSON.stringify(dataDump);
     this.regenerateImage(saveObj, data['base64_image'], token);
@@ -662,14 +664,13 @@ export class LTIFormComponent implements OnInit {
     document.body.appendChild(image);
     image.setAttribute('src', imageData);
     image.setAttribute('visibility', 'hidden');
-    if(!environment.production) {
+    if (!environment.production) {
       image.crossOrigin = 'anonymous';
     }
     image.onload = (res) => {
-      console.log("Image data", res);
+      console.log('Image data', res);
       const canvas = document.createElement('canvas');
       document.body.appendChild(canvas);
-      canvas.id = "holder"
       canvas.width = image.width;
       canvas.height = image.height;
       canvas.setAttribute('visibility', 'hidden');
@@ -714,7 +715,8 @@ export class LTIFormComponent implements OnInit {
 
   }
 
+
   getPins() {
-    this.pins = [{pin:'D2'}, {pin:'D3'}, {pin:'D4'}, {pin:'D5'}, {pin:'D6'}, {pin:'D7'}]
+    this.pins = [{ pin: 'D2' }, { pin: 'D3' }, { pin: 'D4' }, { pin: 'D5' }, { pin: 'D6' }, { pin: 'D7' }];
   }
 }
