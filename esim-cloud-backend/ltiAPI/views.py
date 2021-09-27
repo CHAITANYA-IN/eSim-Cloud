@@ -54,7 +54,8 @@ class LTIExist(APIView):
             "test_case": consumer.test_case.id if consumer.test_case else None,
             "scored": consumer.scored,
             "id": consumer.id,
-            "sim_params": consumer.sim_params
+            "sim_params": consumer.sim_params,
+            "type": consumer.type,
         }
         return Response(response_data,
                         status=status.HTTP_200_OK)
@@ -109,7 +110,8 @@ class LTIBuildApp(APIView):
                     "test_case": serialized.data['test_case'],
                     "scored": serialized.data['scored'],
                     "id": serialized.data['id'],
-                    "sim_params": serialized.data['sim_params']
+                    "sim_params": serialized.data['sim_params'],
+                    "type": serialized.data['type'],
                 }
                 print("Recieved POST for LTI APP:", response_data)
                 response_serializer = consumerResponseSerializer(
@@ -170,7 +172,8 @@ class LTIUpdateAPP(APIView):
                 "test_case": serialized.data['test_case'],
                 "scored": serialized.data['scored'],
                 "id": consumer.id,
-                "sim_params": serialized.data['sim_params']
+                "sim_params": serialized.data['sim_params'],
+                "type": serialized.data['type'],
             }
             return Response(response_data, status=status.HTTP_200_OK)
         else:

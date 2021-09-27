@@ -39,3 +39,7 @@ mat-form-field {
 #modalImage {
 	height: 500px;
 }
+
+.modal-footer > button {
+	width: 200px;
+}

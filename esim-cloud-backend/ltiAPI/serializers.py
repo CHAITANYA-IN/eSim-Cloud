@@ -15,7 +15,7 @@ class consumerSerializer(serializers.ModelSerializer):
         model = lticonsumer
         fields = ['consumer_key', 'secret_key', 'model_schematic',
                   'score', 'initial_schematic', 'test_case', 'scored',
-                  'id', 'sim_params']
+                  'id', 'sim_params', 'type']
 
     def create(self, validated_data):
         consumer = lticonsumer.objects.create(**validated_data)
@@ -29,7 +29,7 @@ class consumerSubmissionSerializer(serializers.ModelSerializer):
         model = lticonsumer
         fields = ['consumer_key', 'secret_key', 'model_schematic',
                   'score', 'initial_schematic', 'test_case', 'scored',
-                  'id', 'sim_params']
+                  'id', 'sim_params', 'type']
 
     def create(self, validated_data):
         pass
@@ -53,6 +53,7 @@ class consumerResponseSerializer(serializers.Serializer):
     model_schematic = serializers.IntegerField()
     test_case = serializers.IntegerField(required=False, allow_null=True)
     scored = serializers.BooleanField()
+    type = serializers.CharField(max_length=50)
 
 
 class SessionSerializer(serializers.ModelSerializer):

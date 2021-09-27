@@ -24,6 +24,7 @@ class lticonsumer(models.Model):
     sim_params = ArrayField(
         models.CharField(max_length=20), blank=True, null=True)
     scored = models.BooleanField(null=False)
+    type = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.consumer_key
